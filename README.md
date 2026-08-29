@@ -1,0 +1,2 @@
+# Diaring
+proyecto media tec
