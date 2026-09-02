@@ -398,84 +398,89 @@ body {
     padding-top: clamp(20px, 4vw, 60px);
 }
 
-
-/* catalogocom (donde esta todo el catalogo completo) */
-
+/*catalogo com */
 .catalogocom .cursoscom {
-    display: grid;
-    grid-auto-rows: clamp(60px, 10vw, 200px);
-    gap: clamp(15px, 4vw, 50px);
-    margin-left: clamp(5px, 4vw, 40vw);
-    margin-top: clamp(5px, 3vw, 30vw);
-    font-size: clamp(0.5rem, 0.5rem, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+    margin: 40px auto;
 }
 
 .catalogocom .cursocom {
-    position: relative;
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: background-color 0.2s;
+}
+
+.catalogocom .cursocom:hover {
+    background-color: rgba(255,255,255,0.05);
 }
 
 .catalogocom .cursocom img {
-    width: 30%;
-    max-width: 400px;
-    height: 100%;
+    width: 90px;
+    height: 60px;
     object-fit: cover;
-    transition: (transform 0.3s);
+    border-radius: 6px;
+    flex-shrink: 0;
 }
 
-.catalogocom .cursocom img:hover {
-    transform: scale(1.04);
+.catalogocom .cursocom .info {
+    flex: 1;
+    min-width: 0;
 }
 
-/* Materia de los cursos */
-
-.catalogocom .cursocom h3 {
-    position: relative;
-    font-size: clamp(0.7rem, 0.7rem, 1.5rem);
+.catalogocom .cursocom .info h3 {
+    font-size: 1.05rem;
     font-weight: bold;
     color: white;
-    text-shadow: 0 0 10px rgba(0,0,0,0.9);
-    z-index: 2;
-    margin-left: clamp(10px, 4vw, 50px);
-    height: 15px;
+    margin: 0 0 4px;
 }
 
-/* descripción de los cursos */
-
-.catalogocom .cursocom p {
-    margin-top: 14px;
-    font-size: 1rem;
-    color:white;
+.catalogocom .cursocom .info .subtemas {
+    font-size: 0.8rem;
+    color: #8fa3c4;
+    margin: 0 0 4px;
 }
 
-/* calificación de los cursos */
+.catalogocom .cursocom .info .descripcion {
+    font-size: 0.85rem;
+    color: #c5d2e6;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
-.catalogocom .cursocom span {
-    margin-top: 8px;
-    font-size: 1rem;
+.catalogocom .cursocom .extra {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+.catalogocom .cursocom .extra .duracion {
+    font-size: 0.9rem;
     font-weight: bold;
     color: white;
-}   
-
-/*el boton para acceder al link de los cursos*/
+    margin: 0;
+}
 
 .catalogocom .botontin {
-    display: flex;
-    flex-direction: row;
     background-color: #1aafb4;
     color: white;
     border: none;
-    border-radius: 50px;
-    padding: 14px 20px;
+    border-radius: 6px;
+    padding: 8px 16px;
     cursor: pointer;
-    width: clamp(2px, 2px, 50px);
-    gap: 25px;
+    font-size: 0.85rem;
+    white-space: nowrap;
 }
-.catalogocom .cursocom p {
-    font-size: clamp(0.7rem, 0.7rem, 1.5rem);
-    gap: clamp(25px, 4vw, 50px);
 
+.catalogocom .botontin:hover {
+    background-color: #25698b;
 }
 
 

@@ -44,28 +44,38 @@ $resultado = mysqli_query($conexion, $sql);
     </header>
 <main class = "catalogocom">
 
-    <div class="cursoscom">
+<main class="catalogocom">
 
-        <?php while ($curso = mysqli_fetch_assoc($resultado)) { ?>
+<div class="cursoscom">
 
-        <div class="cursocom">
+<?php while ($curso = mysqli_fetch_assoc($resultado)) { ?>
 
-            <img src="<?= htmlspecialchars($curso['imagen']) ?>" alt="">
-            <div class>
-            <p><?= htmlspecialchars($curso['duracion']) ?> horas</p>
+    <div class="cursocom">
+        <img src="<?= htmlspecialchars($curso['imagen']) ?>" alt="">
+
+        <div class="info">
             <h3><?= htmlspecialchars($curso['nombre']) ?></h3>
-            <p><?= htmlspecialchars($curso['descripcion']) ?></p>
-            <a href ="<?= htmlspecialchars($curso['link']) ?>">
-                <button class="botontin">Saber mas</button>
+            <p class="subtemas">
+                <?= htmlspecialchars($curso['Subtema1']) ?>, 
+                <?= htmlspecialchars($curso['Subtema2']) ?>, 
+                <?= htmlspecialchars($curso['Subtema3']) ?>
+            </p>
+              <p class="descripcion"><?= htmlspecialchars($curso['descripcion']) ?></p>
+        </div>
+
+        <div class="extra">
+            <p class="duracion"><?= htmlspecialchars($curso['duracion']) ?> horas</p>
+            <a href="<?= htmlspecialchars($curso['link']) ?>">
+                <button class="botontin">Saber más</button>
             </a>
-            <p><?= htmlspecialchars($curso['Subtema1']) ?></p>
-            <p><?= htmlspecialchars($curso['Subtema2']) ?></p>
-            <p><?= htmlspecialchars($curso['Subtema3']) ?></p>
-            </div>
-        <?php } ?>
+        </div>
     </div>
 
+<?php } ?>
 
+</div>
+
+</main>
 
 
 
