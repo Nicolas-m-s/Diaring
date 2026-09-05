@@ -178,8 +178,6 @@ body {
     color: white;
 }
 
-/* ===== RESPONSIVE ===== */
-
 @media (max-width: 900px) {
 
     .header {
@@ -479,9 +477,7 @@ body {
 }
 
 
-/* ========================================
-   FOOTER
-======================================== */
+/*FOOTER*/
 
 footer {
     background-color: var(--primary-dark);
@@ -491,9 +487,7 @@ footer {
     color: white;
 }
 
-/* ========================================
-   CONTENEDOR PRINCIPAL
-======================================== */
+/*CONTENEDOR PRINCIPAL*/
 
 .footer-contenido {
     display: flex;
@@ -503,7 +497,7 @@ footer {
     flex-wrap: wrap;
 }
 
-/* ================= pagina principal ================= */
+/*pagina principal*/
 
 :root {
   --primary-dark: #1e2e49;
@@ -521,7 +515,7 @@ body .inicio {
   line-height: 1.6;
 }
 
-/* ================= HEADER ================= */
+/*HEADER*/
 
 .header {
     display: flex;
@@ -567,7 +561,7 @@ body .inicio {
     color: var(--light);
 }
 
-/* ===== NAVBAR ===== */
+/*NAVBAR*/
 
 .header .navbar ul {
     display: flex;
@@ -588,7 +582,7 @@ body .inicio {
     color: var(--alternative);
 }
 
-/* ===== ICONOS ===== */
+/*ICONOS*/
 
 .header .iconos {
     display: flex;
@@ -630,7 +624,7 @@ body .inicio {
     cursor: pointer;
 }
 
-/* ===== RESPONSIVE ===== */
+/*RESPONSIVE*/
 
 @media (max-width: 768px) {
     .header {
