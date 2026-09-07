@@ -38,7 +38,6 @@ $resultado = mysqli_query($conexion, $sql);
               <input type="search" placeholder="Search" aria-label="Buscar">
               <button type="submit" aria-label="Buscar">🔍</button>
             </form>
-            <button class="notificaciones" aria-label="Notificaciones">🔔</button>
             <img src="img/User.png" alt="Imagen de Usuario" class="User">
         </div>
     </header>
