@@ -218,8 +218,6 @@ body {
 
 /*parte de Nicolas*/
 
-/*catalogo*/
-
 .catalogo main{
     padding: 300px 40px 40px;
 }
@@ -318,8 +316,6 @@ body {
     transform: scale(1.04);
 }
 
-/* Materia de los cursos */
-
 .catalogo .curso h3 {
     position: absolute;
     bottom: 70px;
@@ -332,15 +328,11 @@ body {
     margin:0;
 }
 
-/* descripción de los cursos */
-
 .catalogo .curso p {
     margin-top: 14px;
     font-size: 1rem;
     color:white;
 }
-
-/* calificación de los cursos */
 
 .catalogo .curso span {
     display: block;
@@ -426,8 +418,6 @@ body {
     transform: scale(1.04);
 }
 
-/* Materia de los cursos */
-
 .catalogocom .cursocom h3 {
     position: relative;
     font-size: clamp(0.7rem, 0.7rem, 1.5rem);
@@ -439,15 +429,11 @@ body {
     height: 15px;
 }
 
-/* descripción de los cursos */
-
 .catalogocom .cursocom p {
     margin-top: 14px;
     font-size: 1rem;
     color:white;
 }
-
-/* calificación de los cursos */
 
 .catalogocom .cursocom span {
     margin-top: 8px;
@@ -455,8 +441,6 @@ body {
     font-weight: bold;
     color: white;
 }   
-
-/*el boton para acceder al link de los cursos*/
 
 .catalogocom .botontin {
     display: flex;
@@ -891,13 +875,11 @@ footer {
     
 /*Cristian parte*/
 
-
-
 .cristian{
     background-color: var(--primary);
 }
 
-.comunidad {
+.Sobre_Nosotros {
     background-color: var(--primary);
     min-height: 100vh;
 }
