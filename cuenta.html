@@ -17,14 +17,18 @@
         </a>
             <nav class="navbar">
                 <ul>
-                    <li><a href="/Index.html">INICIO</a></li>
-                    <li><a href="/Tutoriales.html">TUTORIALES</a></li>
-                    <li><a href="/catalogo.HTML">CATÁLOGO</a></li>
+                    <li><a href="Index.html">INICIO</a></li>
+                    <li><a href="Tutoriales.html">TUTORIALES</a></li>
+                    <li><a href="catalogo.php">CATÁLOGO</a></li>
                     <li><a href="#" class="active">MI CUENTA</a></li>
-                    <li><a href="/comunidad.html">COMUNIDAD</a></li>
+                    <li><a href="comunidad.html">COMUNIDAD</a></li>
                 </ul>
             </nav>
         <div class="iconos">
+            <div class="auth-header-links">
+                <a href="iniciar_sesion.html">Iniciar sesión</a>
+                <a href="registrarse.html">Registrarse</a>
+            </div>
             <form class="buscador" role="search">
                 <input type="search" placeholder="Search" aria-label="Buscar">
                 <button type="submit" aria-label="Buscar">🔍</button>
@@ -63,10 +67,11 @@
 
         <div class="info-item">
             <img src="img/cursos guardados.png" alt="cursos guardados">
-            <p>Cursos guardados: 12</p>
+            <p id="cursos-guardados">Cursos guardados: 0</p>
         </div>
 
         <button class="editar-perfil" type="button">Editar Perfil</button>
+        <a class="crear-curso" href="crear.html">Crear un curso</a>
     </div>
 
         <div class="divider"></div>
@@ -75,7 +80,7 @@
         <div class="tiempo-aprendido">
             <span class="tiempo-icono">⏱</span>
             <div>
-                <strong>65 H</strong>
+                <strong id="horas-aprendidas">0 H</strong>
                 <span>Tiempo Aprendido</span>
             </div>
         </div>
@@ -87,44 +92,8 @@
         </div>
 
         <div class="cursos-container">
-
-    <div class="curso-card">
-        <img src="img/python.logo.png" alt="Python">
-        <span class="estado">En progreso</span>
-        <h3>Programación</h3>
-        <div class="estrellas">★★★★★ <small>(5.0)</small></div>
-        <p>⏱ 10 Horas</p>
-
-        <div class="barra">
-            <div class="progreso"></div>
+            <!-- CURSOS_USUARIO -->
         </div>
-    </div>
-
-    <div class="curso-card">
-        <img src="img/finanzas.logo.png" alt="Finanzas">
-        <span class="estado">En progreso</span>
-        <h3>Finanzas</h3>
-        <div class="estrellas">★★★★★ <small>(5.0)</small></div>
-        <p>⏱ 20 Horas</p>
-
-        <div class="barra">
-            <div class="progreso"></div>
-        </div>
-    </div>
-
-    <div class="curso-card">
-        <img src="img/quimica.logo.png" alt="Química">
-        <span class="estado completado">Completado</span>
-        <h3>Química</h3>
-        <div class="estrellas">★★★★★ <small>(5.0)</small></div>
-        <p>⏱ 35 Horas</p>
-
-        <div class="barra">
-            <div class="progreso"></div>
-        </div>
-    </div>
-
-</div>
 
 
 

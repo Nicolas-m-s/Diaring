@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diaring | Iniciar sesión</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body class="formucatalogo">
+    <header class="header">
+        <a href="#" class="brand">
+            <img src="img/diaring.logo.png" alt="Logo de Diaring">
+            <div class="brand-texto">
+                <span class="brand-nombre">Diaring</span>
+                <small class="eslogan">Entiende más, memoriza menos</small>
+            </div>
+        </a>
+        <nav class="navbar">
+            <ul>
+                <li><a href="Index.html">INICIO</a></li>
+                <li><a href="Tutoriales.html">TUTORIALES</a></li>
+                <li><a href="catalogo.php">CATÁLOGO</a></li>
+                <li><a href="cuenta.php">MI CUENTA</a></li>
+                <li><a href="comunidad.html">COMUNIDAD</a></li>
+            </ul>
+        </nav>
+        <div class="iconos">
+            <div class="auth-header-links">
+                <a href="iniciar_sesion.html">Iniciar sesión</a>
+                <a href="registrarse.html">Registrarse</a>
+            </div>
+            <form class="buscador" role="search">
+                <input type="search" placeholder="Search" aria-label="Buscar">
+                <button type="submit" aria-label="Buscar">🔍</button>
+            </form>
+            <img src="img/User.png" alt="Imagen de Usuario" class="User">
+        </div>
+    </header>
+
+    <main class="formumain">
+        <h1 class="formutitu">Iniciar sesión</h1>
+        <form class="Crearcursito" action="/Diaring/Iniciar_sesion.php" method="POST">
+            <label for="identificador">Usuario o correo electrónico</label>
+            <input type="text" id="identificador" name="identificador" required autocomplete="username">
+
+            <label for="contrasena">Contraseña</label>
+            <input type="password" id="contrasena" name="contrasena" required autocomplete="current-password">
+
+            <button type="submit" class="botontin">Entrar</button>
+        </form>
+        <p>¿No tienes una cuenta? <a href="registrarse.html">Regístrate</a></p>
+    </main>
+
+    <footer>
+        <div class="footer-contenido">
+            <div class="footer-brand">
+                <a href="#" class="brand">
+                    <img src="img/diaring.logo.png" alt="Logo de Diaring">
+                    <div class="brand-texto">
+                        <span class="brand-nombre">Diaring</span>
+                        <small class="eslogan">Entiende más, memoriza menos.</small>
+                    </div>
+                </a>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/diaringaprendizaje/" aria-label="Instagram"><img src="img/instagram.png" alt="Instagram"></a>
+                <a href="https://x.com/diaring01" aria-label="X"><img src="img/x.png" alt="X"></a>
+                <a href="https://www.tiktok.com/@diaringaprendizaje?lang=es-419" aria-label="TikTok"><img src="img/tiktok.png" alt="TikTok"></a>
+                <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=DmwnWstzWGRnDRmKDVTdqMGsQCkHXjjPCJXqZCvrpDWGbqLQBcZzLKQjTSrmgFwXswCwBWkFqxcV" aria-label="Gmail"><img src="img/gmail.png" alt="Gmail"></a>
+            </div>
+        </div>
+        <div class="footer-copy">
+            <p>© 2026 Diaring. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

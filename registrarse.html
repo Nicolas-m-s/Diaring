@@ -1,89 +1,64 @@
-<?php
-require "conexion.php";
-$sql = "SELECT * FROM curso ORDER BY id DESC";
-$resultado = mysqli_query($conexion, $sql);
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diaring | Aprende más, memoriza menos</title>
+    <title>Diaring | Registrarse</title>
     <link rel="stylesheet" href="CSS/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-<body class = "catalogo">
-<header class = header>
-      <a href="#" class="brand">
-          <img src="img/diaring.logo.png" alt="Logo de Diaring">
-          <div class="brand-texto">
-              <span class="brand-nombre">Diaring</span>
-              <small class="eslogan">Entiende más, memoriza menos</small>
-          </div>
-      </a>
-          <nav class="navbar">
+
+<body class = "formucatalogo">
+        <header class = header>
+        <a href="#" class="brand">
+            <img src="img/diaring.logo.png" alt="Logo de Diaring">
+            <div class="brand-texto">
+                <span class="brand-nombre">Diaring</span>
+                <small class="eslogan">Entiende más, memoriza menos</small>
+            </div>
+        </a>
+            <nav class="navbar">
               <ul>
                   <li><a href="Index.html">INICIO</a></li>
                   <li><a href="Tutoriales.html">TUTORIALES</a></li>
-                  <li><a href="#" class="active">CATÁLOGO</a></li>
+                  <li><a href="catalogo.php">CATÁLOGO</a></li>
                   <li><a href="cuenta.php">MI CUENTA</a></li>
                   <li><a href="comunidad.html">COMUNIDAD</a></li>
               </ul>
-          </nav>
-      <div class="iconos">
-          <div class="auth-header-links">
-              <a href="iniciar_sesion.html">Iniciar sesión</a>
-              <a href="registrarse.html">Registrarse</a>
-          </div>
-          <form class="buscador" role="search">
+            </nav>
+        <div class="iconos">
+            <div class="auth-header-links">
+                <a href="iniciar_sesion.html">Iniciar sesión</a>
+                <a href="registrarse.html">Registrarse</a>
+            </div>
+            <form class="buscador" role="search">
               <input type="search" placeholder="Search" aria-label="Buscar">
               <button type="submit" aria-label="Buscar">🔍</button>
-          </form>
-          <button class="notificaciones" aria-label="Notificaciones">🔔</button>
-          <img src="img/User.png" alt="Imagen de Usuario" class="User">
-      </div>
+            </form>
+            <img src="img/User.png" alt="Imagen de Usuario" class="User">
+        </div>
     </header>
+    <main class="formumain">
+        <h1 class="formutitu">Registrarse</h1>
+        <form class="Crearcursito" action="/Diaring/Crear_registro.php" method="POST">
+            <label for="nombre">Nombre de usuario</label>
+            <input type="text" id="nombre" name="nombre" required maxlength="80" autocomplete="username">
 
+            <label for="correo">Correo electrónico</label>
+            <input type="email" id="correo" name="correo" required maxlength="150" autocomplete="email">
 
-<main>
-    <section>
-        <div class="titulos">
-            <p id="apre">Aprende con algunos de nuestros cursos de diversas variedades.</p>
-            <p id="algu">Algunos de nuestros cursos en tendencia.</p>
-            <h2>Aprende con nosotros</h2>
-    </div>
-    <div class="cursos">
+            <label for="contrasena">Contraseña</label>
+            <input type="password" id="contrasena" name="contrasena" required minlength="8" autocomplete="new-password" placeholder="Mínimo 8 caracteres">
 
-        <?php while ($curso = mysqli_fetch_assoc($resultado)) { ?>
+            <label for="confirmar_contrasena">Confirmar contraseña</label>
+            <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" required minlength="8" autocomplete="new-password" placeholder="Repite tu contraseña">
 
-        <div class="curso">
-            <a href="Entrar_curso.php?curso_id=<?= (int) $curso['id'] ?>" class="imagen-curso-link">
-                <img src="<?= htmlspecialchars($curso['imagen']) ?>" alt="<?= htmlspecialchars($curso['nombre']) ?>">
-            </a>
-            <h3><?= htmlspecialchars($curso['nombre']) ?></h3>
-            <p><?= htmlspecialchars($curso['descripcion']) ?></p>
-            </div>
-
-
-<?php } ?>
-
-</div>
-
-    <a class="boton-catalogo-completo" href="catalogocom.php">Ver catálogo completo</a>
-
-<div class="razon">
-    <p id ="porque">¿Porque deberia elegir Diaring para aprender?</p>
-    <p id="porque2">Diaring es una plataforma de aprendizaje que recolecta cientos de cursos a traves del catalogo con el objetivo de brindar una experiencia de aprendizaje única.</p>
-</div>
-
-    </section>
-</main>
-
+            <button type="submit" class="botontin">Crear cuenta</button>
+        </form>
+        <p>¿Ya tienes una cuenta? <a href="iniciar_sesion.html">Inicia sesión</a></p>
+    </main>
     <footer>
         <div class="footer-contenido">
 
@@ -118,6 +93,5 @@ $resultado = mysqli_query($conexion, $sql);
             <p>© 2026 Diaring. Todos los derechos reservados.</p>
         </div>
     </footer>
-    <script src= "script.js"></script>
     </body>
 </html>
