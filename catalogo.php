@@ -32,7 +32,6 @@ $resultado = mysqli_query($conexion, $sql);
                   <li><a href="/Tutoriales.html">TUTORIALES</a></li>
                   <li><a href="#" class="active">CATÁLOGO</a></li>
                   <li><a href="/cuenta.html">MI CUENTA</a></li>
-                  <li><a href="/comunidad.html">COMUNIDAD</a></li>
               </ul>
           </nav>
       <div class="iconos">
@@ -75,8 +74,8 @@ $resultado = mysqli_query($conexion, $sql);
     </section>
 </main>
 
-    <footer>
-        <div class="footer-contenido">
+ <footer>
+      <div class="footer-contenido">
 
             <div class="footer-brand">
                 <a href="#" class="brand">
@@ -88,33 +87,15 @@ $resultado = mysqli_query($conexion, $sql);
                 </a>
             </div>
 
-            <nav class="footer-links" aria-label="Enlaces del footer">
-                <div class="footer-columna">
-                    <h3>Compañía</h3>
-                    <ul>
-                        <li><a href="#">Sobre nosotros</a></li>
-                        <li><a href="#">Contacto</a></li>
-                        <li><a href="#">Carreras</a></li>
-                    </ul>
-                </div>
+            <a href="cuenta.html" id="btn-footer-login" class="btn-login-footer">Iniciar Sesión</a>
 
-                <div class="footer-columna">
-                    <h3>Recursos</h3>
-                    <ul>
-                        <li><a href="#">Documentación</a></li>
-                        <li><a href="#">Ayuda</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-columna">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="#">Términos de uso</a></li>
-                        <li><a href="#">Privacidad</a></li>
-                    </ul>
-                </div>
-            </nav>
+            <div class="footer-secciones">
+              <h4>Explora</h4>
+              <ul>
+                <li><a href="/Sobre_Nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+              </ul>
+            </div>
 
             <div class="footer-social">
                 <a href="https://www.instagram.com/diaringaprendizaje/" aria-label="Instagram">
@@ -131,12 +112,13 @@ $resultado = mysqli_query($conexion, $sql);
                 </a>
             </div>
 
-        </div>
+      </div>
 
-        <div class="footer-copy">
-            <p>© 2026 Diaring. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+      <div class="footer-copy">
+          <p>© 2026 Diaring. Todos los derechos reservados.</p>
+      </div>
+</footer>
+
     <script src= "script.js"></script>
     </body>
 </html>
