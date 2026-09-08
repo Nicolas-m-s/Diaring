@@ -1054,7 +1054,6 @@ footer {
     cursor: pointer;
 }
 
-
 .card-grid {
     display: flex;
     gap:20px;
@@ -1186,91 +1185,6 @@ footer {
     font-weight: bold;
     margin-bottom: 8px;
 }
-footer {
-    background-color: var(--primary-dark);
-    padding: 2.5rem 5% 1rem;
-    margin-top: 3rem;
-    border-top: 2px solid var(--alternative);
-}
-
-.footer-contenido {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 4rem;
-    flex-wrap: wrap;
-}
-
-.footer-brand .brand-nombre {
-    font-size: 1.1rem;
-}
-
-.footer-brand .eslogan {
-    font-size: 0.75rem;
-    color: var(--light);
-}
-
-.footer-links {
-    display: flex;
-    gap: 4rem;
-    flex-wrap: wrap;
-    flex: 1;
-    justify-content: center;
-}
-
-.footer-columna h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--light);
-    margin-bottom: 1rem;
-}
-
-.footer-columna ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-}
-
-.footer-columna a {
-    text-decoration: none;
-    font-size: 0.88rem;
-    color: var(--light);
-    transition: color 0.3s;
-}
-
-.footer-columna a:hover {
-    color: var(--light-blue);
-}
-
-.footer-social {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.6rem;
-    align-items: center;
-}
-
-.footer-social a img {
-    width: 26px;
-    height: 26px;
-    object-fit: contain;
-    filter: brightness(0.8);
-    transition: filter 0.3s, transform 0.3s;
-}
-
-.footer-social a:hover img {
-    filter: brightness(1);
-    transform: scale(1.15);
-}
-
-.footer-copy {
-    text-align: center;
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--alternative);
-    font-size: 0.78rem;
-    color: var(--light);
-}
 
 @media (max-width: 768px) {
 
@@ -1326,7 +1240,8 @@ footer {
         flex-direction: row;
     }
 }
-/* ================= evans parte ================= */
+/*evans parte*/
+
 body {
     background-color: var(--primary-dark);
     color: var(--dark);
@@ -1517,123 +1432,6 @@ header {
     color: var(--light);
 }
 
-footer {
-    background-color: var(--primary);
-    padding: 2.5rem 5% 1rem;
-    margin-top: 3rem;
-    border-top: 2px solid var(--alternative);
-}
-
-.footer-contenido {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 4rem;
-    flex-wrap: wrap;
-}
-
-.footer-brand .brand-nombre {
-    font-size: 1.1rem;
-}
-
-.footer-brand .eslogan {
-    font-size: 0.75rem;
-    color: var(--light);
-}
-
-.footer-links {
-    display: flex;
-    gap: 4rem;
-    flex-wrap: wrap;
-    flex: 1;
-    justify-content: center;
-}
-
-.footer-columna h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--light);
-    margin-bottom: 1rem;
-}
-
-.footer-columna ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-}
-
-.footer-columna a {
-    text-decoration: none;
-    font-size: 0.88rem;
-    color: var(--light);
-    transition: color 0.3s;
-}
-
-.footer-columna a:hover {
-    color: var(--light-blue);
-}
-
-.footer-social {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.6rem;
-    align-items: center;
-}
-
-.footer-social a img {
-    width: 26px;
-    height: 26px;
-    object-fit: contain;
-    filter: brightness(0.8);
-    transition: filter 0.3s, transform 0.3s;
-}
-
-.footer-social a:hover img {
-    filter: brightness(1);
-    transform: scale(1.15);
-}
-
-.footer-copy {
-    text-align: center;
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--alternative);
-    font-size: 0.78rem;
-    color: var(--light);
-}
-
-@media (max-width: 768px) {
-    header {
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-
-    .navbar ul {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }   
-
-    .tutoriales-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-contenido {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .footer-links {
-        justify-content: center;
-    }
-
-    .footer-social {
-        flex-direction: row;
-    }
-
-}
 body {
     font-family: 'open-sans', sans-serif;
     background-color: var(--primary-dark);

@@ -44,7 +44,6 @@ $resultado = mysqli_query($conexion, $sql);
               <input type="search" placeholder="Search" aria-label="Buscar">
               <button type="submit" aria-label="Buscar">🔍</button>
           </form>
-          <button class="notificaciones" aria-label="Notificaciones">🔔</button>
           <img src="img/User.png" alt="Imagen de Usuario" class="User">
       </div>
     </header>
@@ -84,8 +83,8 @@ $resultado = mysqli_query($conexion, $sql);
     </section>
 </main>
 
-    <footer>
-        <div class="footer-contenido">
+ <footer>
+      <div class="footer-contenido">
 
             <div class="footer-brand">
                 <a href="#" class="brand">
@@ -95,6 +94,16 @@ $resultado = mysqli_query($conexion, $sql);
                         <small class="eslogan">Entiende más, memoriza menos.</small>
                     </div>
                 </a>
+            </div>
+
+            <a href="cuenta.html" id="btn-footer-login" class="btn-login-footer">Iniciar Sesión</a>
+
+            <div class="footer-secciones">
+              <h4>Explora</h4>
+              <ul>
+                <li><a href="/Sobre_Nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+              </ul>
             </div>
 
             <div class="footer-social">
@@ -112,12 +121,13 @@ $resultado = mysqli_query($conexion, $sql);
                 </a>
             </div>
 
-        </div>
+      </div>
 
-        <div class="footer-copy">
-            <p>© 2026 Diaring. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+      <div class="footer-copy">
+          <p>© 2026 Diaring. Todos los derechos reservados.</p>
+      </div>
+</footer>
+
     <script src= "script.js"></script>
     </body>
 </html>
