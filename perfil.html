@@ -17,15 +17,13 @@
                 <li><a href="catalogo.html">Catalogo</a></li>
                 <li><a href="recursos.html">Recursos</a></li>
                 <li><a href="ensena.html">Enseña en diaring</a></li>
-                <li><a href="perfil.html">Perfil</a></li>
+                <li><a href="perfil.html" class="active">Perfil</a></li>
                 <li><a href="login.html" class="nav-login">Iniciar Sesión</a></li>
                 <li><a href="registro.html" class="nav-register">Registrarse</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-            <!-- CONTENIDO PRINCIPAL -->
     <main>
         <!-- Banner Superior -->
         <div class="progress-page-header">
@@ -36,74 +34,66 @@
             </div>
         </div>
 
-        <!-- Dashboard Superior (Progreso General + Racha) -->
-        <div class="progress-dashboard">
-            <!-- Tarjeta Izquierda: Progreso General -->
-            <div class="general-progress-card">
-                <div class="general-top-row">
-                    <div class="circle-progress-container">
-                        <div class="circle-progress-inner">72%</div>
-                    </div>
-                    <div class="general-info">
-                        <h3>Tu progreso general</h3>
-                        <p>Vas muy bien, sigue así.</p>
-                        <div class="next-milestone-pill">
-                            <span>🎯</span> Próximo hito: Completar 2 cursos
-                        </div>
-                    </div>
-                </div>
+                <div class="profile-page-header">
+            <h1>Mi Perfil</h1>
+            <p>Gestiona tu Aprendizaje y Descubre Cuanto has Avanzado.</p>
+        </div>
 
-                <div class="stats-grid-row">
-                    <div class="stat-item-box">
-                        <span>📚 Cursos completados</span>
-                        <strong>5</strong>
-                    </div>
-                    <div class="stat-item-box">
-                        <span>🏅 Insignias ganadas</span>
-                        <strong>8</strong>
-                    </div>
-                    <div class="stat-item-box">
-                        <span>🔥 Días de racha</span>
-                        <strong>14</strong>
-                    </div>
-                    <div class="stat-item-box">
-                        <span>⭐ Puntos XP</span>
-                        <strong>3,450</strong>
-                    </div>
-                </div>
+        <div class="profile-info-card">
+            <div class="profile-avatar">
+                👤
             </div>
-
-            <!-- Tarjeta Derecha: Racha Actual -->
-            <div class="streak-card">
-                <div>
-                    <div class="streak-header">
-                        <span>🔥</span> Racha Actual
-                    </div>
-                    <div class="streak-count-box">
-                        <h2>14 días</h2>
-                        <p>¡Sigue así!</p>
-                    </div>
-                    <div class="week-dots">
-                        <div class="day-dot"><span>D</span><div class="dot active"></div></div>
-                        <div class="day-dot"><span>L</span><div class="dot active"></div></div>
-                        <div class="day-dot"><span>M</span><div class="dot active"></div></div>
-                        <div class="day-dot"><span>M</span><div class="dot active"></div></div>
-                        <div class="day-dot"><span>J</span><div class="dot active"></div></div>
-                        <div class="day-dot"><span>V</span><div class="dot active"></div></div>
-                        <div class="day-dot"><span>S</span><div class="dot active"></div></div>
-                    </div>
-                </div>
-                <div class="streak-reward-box">
-                    <div>
-                        <span style="font-size: 0.7rem; color: #e5e7eb; display: block;">Próxima recompensa</span>
-                        <strong>Medalla "Constancia"</strong>
-                    </div>
-                    <span>></span>
-                </div>
+            <div class="profile-details">
+                <h2>@Usuario <span class="level-badge">👑 Nivel 8</span></h2>
+                <p>Estudiante</p>
+                <p>Grado: 11°1</p>
+                <p>Cursos guardados: 12</p>
+                <p style="color: #6b7280; font-size: 0.82rem; margin-top: 4px;">Miembro desde mayo 2026</p>
             </div>
         </div>
 
-        <!-- Sección inferior: Tu progreso en cursos -->
+        <section class="profile-options-section">
+            <div class="section-divider-title">
+                ⚙️ Opciones de Perfil
+            </div>
+
+            <div class="profile-options-grid">
+                <!-- Opción 1: Editar perfil -->
+                <a href="#" class="profile-option-card">
+                    <div class="option-left">
+                        <div class="option-icon-box">👤</div>
+                        <div class="option-info">
+                            <h3>Editar perfil</h3>
+                            <p>Actualiza tu Información</p>
+                        </div>
+                    </div>
+                    <div class="option-arrow">></div>
+                </a>
+
+                <a href="login.html" class="profile-option-card">
+                    <div class="option-left">
+                        <div class="option-icon-box" style="color: #b91c1c;">🚪</div>
+                        <div class="option-info">
+                            <h3>Cerrar Sesión</h3>
+                            <p>Salir de tu cuenta</p>
+                        </div>
+                    </div>
+                    <div class="option-arrow">></div>
+                </a>
+
+                <a href="#" class="profile-option-card">
+                    <div class="option-left">
+                        <div class="option-icon-box" style="color: #059669;">❤️</div>
+                        <div class="option-info">
+                            <h3>Favoritos</h3>
+                            <p>12 Cursos Guardados</p>
+                        </div>
+                    </div>
+                    <div class="option-arrow">></div>
+                </a>
+            </div>
+        </section>
+
         <section class="courses-progress-section">
             <div class="section-title-action">
                 <h2>📖 Tu progreso en cursos</h2>
@@ -176,67 +166,7 @@
                 </div>
             </div>
         </section>
-    </main>
 
-        <div class="profile-page-header">
-            <h1>Mi Perfil</h1>
-            <p>Gestiona tu Aprendizaje y Descubre Cuanto has Avanzado.</p>
-        </div>
-
-        <div class="profile-info-card">
-            <div class="profile-avatar">
-                👤
-            </div>
-            <div class="profile-details">
-                <h2>@Usuario <span class="level-badge">👑 Nivel 8</span></h2>
-                <p>Estudiante</p>
-                <p>Grado: 11°1</p>
-                <p>Cursos guardados: 12</p>
-                <p style="color: #6b7280; font-size: 0.82rem; margin-top: 4px;">Miembro desde mayo 2026</p>
-            </div>
-        </div>
-
-        <section class="profile-options-section">
-            <div class="section-divider-title">
-                ⚙️ Opciones de Perfil
-            </div>
-
-            <div class="profile-options-grid">
-                <!-- Opción 1: Editar perfil -->
-                <a href="#" class="profile-option-card">
-                    <div class="option-left">
-                        <div class="option-icon-box">👤</div>
-                        <div class="option-info">
-                            <h3>Editar perfil</h3>
-                            <p>Actualiza tu Información</p>
-                        </div>
-                    </div>
-                    <div class="option-arrow">></div>
-                </a>
-
-                <a href="login.html" class="profile-option-card">
-                    <div class="option-left">
-                        <div class="option-icon-box" style="color: #b91c1c;">🚪</div>
-                        <div class="option-info">
-                            <h3>Cerrar Sesión</h3>
-                            <p>Salir de tu cuenta</p>
-                        </div>
-                    </div>
-                    <div class="option-arrow">></div>
-                </a>
-
-                <a href="#" class="profile-option-card">
-                    <div class="option-left">
-                        <div class="option-icon-box" style="color: #059669;">❤️</div>
-                        <div class="option-info">
-                            <h3>Favoritos</h3>
-                            <p>12 Cursos Guardados</p>
-                        </div>
-                    </div>
-                    <div class="option-arrow">></div>
-                </a>
-            </div>
-        </section>
     </main>
 
     <footer>
