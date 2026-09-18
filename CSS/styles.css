@@ -271,6 +271,14 @@ nav ul li a.active {
 
 .guarantee-info h2 span {
     color: #2ecc71;
+    
+}
+.guarantee-img img {
+    display: block;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px 0 0 8px;
 }
 
 .guarantee-info p {
@@ -284,8 +292,13 @@ nav ul li a.active {
     background-color: #fff;
     color: #111;
     padding: 30px;
-    border-radius: 8px;
+    border-radius: 0 8px 8px 0;
     width: 380px;
+    display: inline-block; 
+    vertical-align: middle; 
+    height: 250px;
+    box-sizing: border-box;
+    margin-left: auto;
 }
 
 .guarantee-card h4 {
