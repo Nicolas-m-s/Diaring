@@ -1,10 +1,14 @@
 <?php
 require "conexion.php";
-$sql = "SELECT * FROM curso ORDER BY id DESC";
+
+$sql = "SELECT c.*, i.nombre AS nombre_institucion 
+        FROM cursos c
+        JOIN instituciones i ON c.id_institucion = i.id
+        WHERE c.estado = 'aprobado'
+        ORDER BY c.id DESC";
+
 $resultado = mysqli_query($conexion, $sql);
 ?>
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,27 +17,24 @@ $resultado = mysqli_query($conexion, $sql);
     <link rel="stylesheet" href="CSS/styles.css">
 </head>
 <body>
-    <!-- HEADER COMPARTIDO -->
     <header>
         <div class="logo-area">
             <h1>Diaring</h1>
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="catalogo.html" class="active">Catalogo</a></li>
-                <li><a href="recursos.html">Recursos</a></li>
-                <li><a href="ensena.html">Enseña en diaring</a></li>
-                <li><a href="perfil.html">Perfil</a></li>
-                <li><a href="login.html" class="nav-login">Iniciar Sesión</a></li>
-                <li><a href="registro.html" class="nav-register">Registrarse</a></li>
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="catalogo.php" class="active">Catalogo</a></li>
+                <li><a href="recursos.php">Recursos</a></li>
+                <li><a href="ensena.php">Enseña en diaring</a></li>
+                <li><a href="perfil.php">Perfil</a></li>
+                <li><a href="login.php" class="nav-login">Iniciar Sesión</a></li>
+                <li><a href="registro.php" class="nav-register">Registrarse</a></li>
             </ul>
         </nav>
     </header>
 
-
     <main class="main-container">
-        <!-- BARRA LATERAL -->
         <aside class="sidebar">
             <ul class="sidebar-menu">
                 <li><a href="#" class="active">Cursos nuevos</a></li>
@@ -54,101 +55,33 @@ $resultado = mysqli_query($conexion, $sql);
                 <li><a href="#">Arte</a></li>
             </ul>
         </aside>
+
         <section class="catalog-content">
-            <div class="breadcrumb">🏠 > Cursos > Cursos nuevos</div>
+            <div class="breadcrumb">🏠 &gt; Cursos &gt; Cursos nuevos</div>
             <h2 class="catalog-title">Cursos <span>nuevos</span></h2>
-            <p class="results-count">6 resultados</p>
+            <p class="results-count"><?= mysqli_num_rows($resultado) ?> resultados</p>
 
             <div class="content-grid">
-                <!-- Tarjeta 1 -->
-                <div class="card">
-                    <?php while ($curso = mysqli_fetch_assoc($resultado)) { ?>
-                    <img src="<?= htmlspecialchars($curso['imagen']) ?>" alt="">
-
-        <div class="card-body">
-            <h4><?= htmlspecialchars($curso['nombre_de_curso']) ?></h4>
-            <span><?= htmlspecialchars($curso['nombre_Institucion']) ?></span>
-            <p><?= htmlspecialchars($curso['descripcion']) ?></p>
-            </div>
-
-
-<?php } ?>
+                <?php while ($curso = mysqli_fetch_assoc($resultado)): ?>
+                    <div class="card">
+                        <img src="uploads/cursos/<?= htmlspecialchars($curso['imagen']) ?>" alt="<?= htmlspecialchars($curso['titulo']) ?>">
+                        <div class="card-body">
+                            <h4><?= htmlspecialchars($curso['titulo']) ?></h4>
+                            <span><?= htmlspecialchars($curso['nombre_institucion']) ?></span>
+                            <p><?= htmlspecialchars($curso['descripcion']) ?></p>
+                            <div class="card-hours"><?= $curso['duracion_horas'] ?> horas</div>
+                            <div class="card-tags">
+                                <span><?= htmlspecialchars($curso['area']) ?></span>
+                                <span><?= $curso['certificado_gratis'] ? 'Gratis' : 'Con costo' ?></span>
+                            </div>
+                            <a href="curso_detalle.php?id=<?= $curso['id'] ?>" class="btn-primary">Acceder</a>
                         </div>
                     </div>
-                </div>
-                <div class="card">
-                    <img src="IMG/E.jpg" alt="DavinCi Editor videos">
-                    <div class="card-body">
-                        <h4><span>DavinCi</span> Editor videos</h4>
-                        <div class="card-profesor">Profesor <span>Alex Noriega</span></div>
-                        <div class="card-hours">20 horas</div>
-                        <div class="card-tags">
-                            <span>Fotografia</span>
-                            <span>Arte</span>
-                            <span>Diseño</span>
-                            <span>Edicion</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="IMG/B.jpg" alt="Harvard Bellas artes">
-                    <div class="card-body">
-                        <h4><span>Harvard</span> Bellas artes</h4>
-                        <div class="card-profesor">Profesor <span>Juan Martin</span></div>
-                        <div class="card-hours">70 horas</div>
-                        <div class="card-tags">
-                            <span>Cine</span>
-                            <span>3D</span>
-                            <span>Diseño</span>
-                            <span>Pintura</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="IMG/M.jpg" alt="Musica Conservatoire">
-                    <div class="card-body">
-                        <h4>Musica <span>Conservatoire de Paris</span></h4>
-                        <div class="card-profesor">Profesor <span>Nicolas Merchan</span></div>
-                        <div class="card-hours">140 horas</div>
-                        <div class="card-tags">
-                            <span>Bajos</span>
-                            <span>Piano</span>
-                            <span>Tuba</span>
-                            <span>marketing</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="IMG/F.jpg" alt="MIT Curso fisica">
-                    <div class="card-body">
-                        <h4><span>MIT</span> Curso de fisica</h4>
-                        <div class="card-profesor">Profesor <span>Mauricio Hernandez</span></div>
-                        <div class="card-hours">10 horas</div>
-                        <div class="card-tags">
-                            <span>Fotografia</span>
-                            <span>Arte</span>
-                            <span>Diseño</span>
-                            <span>Edicion</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="IMG/Cl.jpg" alt="Columbia Climatologia">
-                    <div class="card-body">
-                        <h4><span>Columbia</span> Climatologia</h4>
-                        <div class="card-profesor">Profesor <span>Camilo Ballesteros</span></div>
-                        <div class="card-hours">35 horas</div>
-                        <div class="card-tags">
-                            <span>Cine</span>
-                            <span>3D</span>
-                            <span>Diseño</span>
-                            <span>Pintura</span>
-                        </div>
-                    </div>
-                </div>
+                <?php endwhile; ?>
             </div>
         </section>
     </main>
+
     <footer>
         <div class="footer-container">
             <div class="footer-col">
@@ -174,3 +107,4 @@ $resultado = mysqli_query($conexion, $sql);
     </footer>
 </body>
 </html>
+
