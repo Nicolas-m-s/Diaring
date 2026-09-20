@@ -38,7 +38,7 @@ CREATE TABLE `cursos` (
   `certificado_gratis` tinyint(1) NOT NULL DEFAULT 1,
   `imagen` varchar(255) NOT NULL,
   `id_usuario_creador` int(11) DEFAULT NULL,
-  `estado` enum('pendiente','aprobado','rechazado') NOT NULL DEFAULT 'pendiente',
+  `estado` enum('pendiente','aprobado','rechazado') NOT NULL DEFAULT 'aprobado',
   `fecha_creacion` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
