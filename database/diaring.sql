@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:3307
--- Tiempo de generación: 20-09-2026 a las 18:56:21
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 21-09-2026 a las 00:52:58
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -61,7 +61,13 @@ CREATE TABLE `instituciones` (
 --
 
 CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `correo` int(150) NOT NULL,
+  `contrasena` int(255) NOT NULL,
+  `foto` varchar(255) NOT NULL,
+  `rol` enum('usuarios','admin') NOT NULL,
+  `fecha_registro` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
