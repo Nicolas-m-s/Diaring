@@ -1,0 +1,176 @@
+<?php
+require "conexion.php";
+$sql = "SELECT * FROM curso ORDER BY id DESC";
+$resultado = mysqli_query($conexion, $sql);
+?>
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Diaring - Catálogo</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+    <!-- HEADER COMPARTIDO -->
+    <header>
+        <div class="logo-area">
+            <h1>Diaring</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html" class="active">Catalogo</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="ensena.html">Enseña en diaring</a></li>
+                <li><a href="perfil.html">Perfil</a></li>
+                <li><a href="login.html" class="nav-login">Iniciar Sesión</a></li>
+                <li><a href="registro.html" class="nav-register">Registrarse</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main class="main-container">
+        <!-- BARRA LATERAL -->
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active">Cursos nuevos</a></li>
+                <li><a href="#">Cursos promocion</a></li>
+                <li><a href="#">Cursos gratis</a></li>
+                <li><a href="#">Cursos de pago</a></li>
+            </ul>
+
+            <h3>Categoria</h3>
+            <ul class="sidebar-categories">
+                <li><a href="#">Liderazgo</a></li>
+                <li><a href="#">Dibujo</a></li>
+                <li><a href="#">Idiomas</a></li>
+                <li><a href="#">Software</a></li>
+                <li><a href="#">Finanzas</a></li>
+                <li><a href="#">Marketing</a></li>
+                <li><a href="#">Diseño</a></li>
+                <li><a href="#">Arte</a></li>
+            </ul>
+        </aside>
+        <section class="catalog-content">
+            <div class="breadcrumb">🏠 > Cursos > Cursos nuevos</div>
+            <h2 class="catalog-title">Cursos <span>nuevos</span></h2>
+            <p class="results-count">6 resultados</p>
+
+            <div class="content-grid">
+                <!-- Tarjeta 1 -->
+                <div class="card">
+                    <?php while ($curso = mysqli_fetch_assoc($resultado)) { ?>
+                    <img src="<?= htmlspecialchars($curso['imagen']) ?>" alt="">
+
+        <div class="card-body">
+            <h4><?= htmlspecialchars($curso['nombre_de_curso']) ?></h4>
+            <span><?= htmlspecialchars($curso['nombre_Institucion']) ?></span>
+            <p><?= htmlspecialchars($curso['descripcion']) ?></p>
+            </div>
+
+
+<?php } ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="IMG/E.jpg" alt="DavinCi Editor videos">
+                    <div class="card-body">
+                        <h4><span>DavinCi</span> Editor videos</h4>
+                        <div class="card-profesor">Profesor <span>Alex Noriega</span></div>
+                        <div class="card-hours">20 horas</div>
+                        <div class="card-tags">
+                            <span>Fotografia</span>
+                            <span>Arte</span>
+                            <span>Diseño</span>
+                            <span>Edicion</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="IMG/B.jpg" alt="Harvard Bellas artes">
+                    <div class="card-body">
+                        <h4><span>Harvard</span> Bellas artes</h4>
+                        <div class="card-profesor">Profesor <span>Juan Martin</span></div>
+                        <div class="card-hours">70 horas</div>
+                        <div class="card-tags">
+                            <span>Cine</span>
+                            <span>3D</span>
+                            <span>Diseño</span>
+                            <span>Pintura</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="IMG/M.jpg" alt="Musica Conservatoire">
+                    <div class="card-body">
+                        <h4>Musica <span>Conservatoire de Paris</span></h4>
+                        <div class="card-profesor">Profesor <span>Nicolas Merchan</span></div>
+                        <div class="card-hours">140 horas</div>
+                        <div class="card-tags">
+                            <span>Bajos</span>
+                            <span>Piano</span>
+                            <span>Tuba</span>
+                            <span>marketing</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="IMG/F.jpg" alt="MIT Curso fisica">
+                    <div class="card-body">
+                        <h4><span>MIT</span> Curso de fisica</h4>
+                        <div class="card-profesor">Profesor <span>Mauricio Hernandez</span></div>
+                        <div class="card-hours">10 horas</div>
+                        <div class="card-tags">
+                            <span>Fotografia</span>
+                            <span>Arte</span>
+                            <span>Diseño</span>
+                            <span>Edicion</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="IMG/Cl.jpg" alt="Columbia Climatologia">
+                    <div class="card-body">
+                        <h4><span>Columbia</span> Climatologia</h4>
+                        <div class="card-profesor">Profesor <span>Camilo Ballesteros</span></div>
+                        <div class="card-hours">35 horas</div>
+                        <div class="card-tags">
+                            <span>Cine</span>
+                            <span>3D</span>
+                            <span>Diseño</span>
+                            <span>Pintura</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Diaring</h3>
+                <p>Creado por estudiantes, para estudiantes.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Síguenos</h4>
+                <p>📷 🎵 ✖</p>
+            </div>
+            <div class="footer-col">
+                <h4>Acerca de Diaring</h4>
+                <p>Lo que hay detrás de los cursos</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contáctanos</h4>
+                <p>Si necesitas ayuda, comunícate con nosotros y te apoyaremos.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Diaring. Todos los derechos reservados.</span>
+        </div>
+    </footer>
+</body>
+</html>
