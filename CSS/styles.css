@@ -624,13 +624,21 @@ nav ul li a.active {
    ========================================== */
 .teach-hero {
     position: relative;
+<<<<<<< HEAD
     min-height: 600px;
+=======
+    min-height: 500px;
+>>>>>>> origin/main
     margin: 10px 35px 0;
     padding: 0 35px 30px;
     color: #fff;
     overflow: hidden;
     border-radius: 18px;
+<<<<<<< HEAD
     background-color: #ffffff;
+=======
+    background-color: #111;
+>>>>>>> origin/main
 }
 .teach-hero .videoapre {
     position: absolute;
@@ -659,7 +667,11 @@ nav ul li a.active {
     z-index: 2;
     background-color: #000;
     color: #fff;
+<<<<<<< HEAD
     border: 10px solid #ffffff;
+=======
+    border: 1px solid #333;
+>>>>>>> origin/main
     padding: 10px 18px;
     border-radius: 20px;
     display: block;
@@ -829,7 +841,11 @@ nav ul li a.active {
     justify-content: center;
     align-items: center;
     padding: 60px 20px;
+<<<<<<< HEAD
     background: linear-gradient(to bottom, #ffffff 50%, #ffffff 50%);
+=======
+    background: linear-gradient(to bottom, #ffffff 50%, #82c99a 50%);
+>>>>>>> origin/main
     flex: 1;
 }
 
@@ -912,11 +928,19 @@ nav ul li a.active {
 }
 
 .btn-auth:hover {
+<<<<<<< HEAD
     background-color: #2ecc71;
 }
 
 .btn-google {
     background-color: #2ecc71;
+=======
+    background-color: #27ae60;
+}
+
+.btn-google {
+    background-color: #55bc80;
+>>>>>>> origin/main
     color: #fff;
     border: none;
     padding: 12px;
@@ -942,7 +966,11 @@ nav ul li a.active {
 }
 
 .auth-link a {
+<<<<<<< HEAD
     color: #0cdf64;
+=======
+    color: #2ecc71;
+>>>>>>> origin/main
     text-decoration: none;
     font-weight: bold;
 }
