@@ -624,37 +624,47 @@ nav ul li a.active {
    ========================================== */
 .teach-hero {
     position: relative;
-    padding: 60px 40px;
-    color: #fff;
-    background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3') center/cover no-repeat;
     min-height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    margin: 10px 35px 0;
+    padding: 0 35px 30px;
+    color: #fff;
+    overflow: hidden;
+    border-radius: 18px;
+    background-color: #111;
+}
+.teach-hero .videoapre {
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 48px);
+    object-fit: cover;
+    z-index: 0;
+    filter: brightness(0.42);
 }
 
 .teach-hero::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.65);
+    top: 48px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.08));
     z-index: 1;
 }
 
-.teach-hero > * {
+.top-alert-banner {
     position: relative;
     z-index: 2;
-}
-
-.top-alert-banner {
     background-color: #000;
     color: #fff;
     border: 1px solid #333;
-    padding: 10px 25px;
+    padding: 10px 18px;
     border-radius: 20px;
-    display: inline-block;
+    display: block;
     font-size: 13px;
-    margin-bottom: 30px;
+    margin: 0 -35px 0;
 }
 
 .top-alert-banner span {
@@ -663,7 +673,10 @@ nav ul li a.active {
 }
 
 .teach-hero-content {
+    position: relative;
+    z-index: 2;
     max-width: 700px;
+    padding-top: 38px;
 }
 
 .teach-hero-content h2 {
@@ -696,7 +709,7 @@ nav ul li a.active {
 }
 
 .teach-categories-tags span {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(216, 216, 216, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 6px 18px;
     border-radius: 20px;
