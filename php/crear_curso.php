@@ -20,24 +20,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_usuario = $id_usuario_sesion;
 
     if ($titulo === '' || $descripcion === '' || $nombre_institucion === '' || !$duracion || $duracion < 1 || $area === '' || !filter_var($link, FILTER_VALIDATE_URL)) {
-        header("Location: Crear_curso.php?error=datos_invalidos");
+        header("Location: crear_curso.php?error=datos_invalidos");
         exit;
     }
 
     $imagen = '';
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] !== UPLOAD_ERR_NO_FILE) {
         if ($_FILES['imagen']['error'] !== UPLOAD_ERR_OK) {
-            header("Location: Crear_curso.php?error=imagen");
+            header("Location: crear_curso.php?error=imagen");
             exit;
         }
         $extension = strtolower(pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION));
         if (!in_array($extension, ['jpg', 'jpeg', 'png', 'webp'], true)) {
-            header("Location: Crear_curso.php?error=imagen");
+            header("Location: crear_curso.php?error=imagen");
             exit;
         }
         $imagen = bin2hex(random_bytes(12)) . '.' . $extension;
         if (!move_uploaded_file($_FILES['imagen']['tmp_name'], __DIR__ . '/../uploads/cursos/' . $imagen)) {
-            header("Location: Crear_curso.php?error=imagen");
+            header("Location: crear_curso.php?error=imagen");
             exit;
         }
     }
@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $conexion->commit();
     } catch (Throwable $error) {
         $conexion->rollback();
-        header("Location: Crear_curso.php?error=guardar");
+        header("Location: crear_curso.php?error=guardar");
         exit;
     }
 
