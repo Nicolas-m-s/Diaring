@@ -620,6 +620,241 @@ nav ul li a.active {
 }
 
 /* ==========================================
+   3B. VISTAS DE PERFIL Y ADMINISTRACION
+   ========================================== */
+.profile-banner {
+    background: linear-gradient(110deg, #111 0%, #1b5e3f 100%);
+}
+
+.profile-header-row p,
+.profile-sidebar p,
+.admin-intro {
+    color: #666;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.profile-section-title {
+    margin: 38px 0 18px;
+}
+
+.profile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profile-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 18px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #fff;
+    color: #222;
+    font-size: 13px;
+}
+
+.profile-list-item small,
+.admin-table small {
+    display: block;
+    color: #777;
+    margin-top: 5px;
+}
+
+.status {
+    flex-shrink: 0;
+    padding: 5px 10px;
+    border-radius: 14px;
+    background: #eef2f0;
+    color: #35614a;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status-pendiente {
+    background: #fff4d6;
+    color: #8a6500;
+}
+
+.status-rechazado {
+    background: #fde5e5;
+    color: #9b2525;
+}
+
+.profile-list-dark {
+    margin-top: 20px;
+}
+
+.profile-list-dark .profile-list-item {
+    background: #1c1c1c;
+    border-color: #333;
+    color: #fff;
+}
+
+.admin-container {
+    width: min(1180px, calc(100% - 60px));
+    margin: 0 auto;
+    padding: 55px 0 70px;
+    flex: 1;
+}
+
+.admin-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 12px;
+}
+
+.admin-heading h2 {
+    font-size: 32px;
+    margin-top: 6px;
+}
+
+.admin-heading h2 span,
+.eyebrow {
+    color: #2ecc71;
+}
+
+.eyebrow {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.admin-intro {
+    margin-bottom: 28px;
+}
+
+.admin-table-wrap {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.admin-table-scroll {
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 13px;
+}
+
+.admin-table th {
+    background: #111;
+    color: #fff;
+    font-size: 11px;
+    letter-spacing: .04em;
+    padding: 15px 18px;
+    text-transform: uppercase;
+}
+
+.admin-table td {
+    border-bottom: 1px solid #edf0ee;
+    padding: 18px;
+    vertical-align: top;
+    max-width: 260px;
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table td a {
+    color: #1e6b46;
+    font-weight: bold;
+}
+
+.admin-table td a:hover {
+    color: #2ecc71;
+}
+
+.admin-actions,
+.admin-actions form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.admin-actions button {
+    padding: 8px 12px;
+    font-size: 12px;
+}
+
+.btn-danger {
+    background: #fff;
+    color: #a52b2b;
+    border: 1px solid #e8baba;
+    padding: 10px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-danger:hover {
+    background: #fff1f1;
+}
+
+.empty-state {
+    padding: 70px 30px;
+    text-align: center;
+}
+
+.empty-state h3 {
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    color: #666;
+    font-size: 13px;
+}
+
+@media (max-width: 850px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    nav ul {
+        gap: 12px;
+    }
+
+    nav ul li:nth-child(-n+2) {
+        display: none;
+    }
+
+    .profile-container,
+    .admin-container {
+        width: min(100% - 30px, 700px);
+    }
+
+    .profile-header-row,
+    .profile-layout,
+    .admin-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .profile-header-row {
+        margin-top: -35px;
+    }
+
+    .availability-section {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 30px 22px;
+    }
+}
+
+/* ==========================================
    4. VISTA: ENSEÑA EN DIARING
    ========================================== */
 .teach-hero {
