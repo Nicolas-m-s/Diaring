@@ -101,22 +101,6 @@ CREATE TABLE `servicios_acompanamiento` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `certificaciones`
---
-
-CREATE TABLE `certificaciones` (
-  `id` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `id_curso` int(11) NOT NULL,
-  `archivo_certificado` varchar(255) NOT NULL,
-  `estado` enum('pendiente','validado','rechazado') NOT NULL,
-  `fecha_subida` datetime NOT NULL,
-  `fecha_validacion` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `contrataciones`
 --
 
@@ -133,25 +117,6 @@ CREATE TABLE `contrataciones` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `servicios_acompanamiento`
---
-
-CREATE TABLE `servicios_acompanamiento` (
-  `id` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `id_curso` int(11) NOT NULL,
-  `id_certificacion` int(11) NOT NULL,
-  `modalidad` enum('basica','compleado') NOT NULL,
-  `precio` decimal(10,2) NOT NULL,
-  `requiere_videollamada` tinyint(1) NOT NULL,
-  `descripcion` text NOT NULL,
-  `activo` tinyint(1) NOT NULL,
-  `fecha_creacion` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `valoraciones`
 --
 
@@ -162,39 +127,6 @@ CREATE TABLE `valoraciones` (
   `comentario` text NOT NULL,
   `fecha` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `certificaciones`
---
-ALTER TABLE `certificaciones`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `servicios_acompanamiento`
---
-ALTER TABLE `servicios_acompanamiento`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `certificaciones`
---
-ALTER TABLE `certificaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `servicios_acompanamiento`
---
-ALTER TABLE `servicios_acompanamiento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-COMMIT;
 
 --
 -- Indices de la tabla `cursos`
