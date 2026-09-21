@@ -7,7 +7,7 @@ $sql = "SELECT c.*, i.nombre AS nombre_institucion
         WHERE c.estado = 'aprobado'
         ORDER BY c.id DESC";
 
-$resultado = mysqli_query($conexion, $sql);
+$resultado = $conexion->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -59,19 +59,19 @@ $resultado = mysqli_query($conexion, $sql);
         <section class="catalog-content">
             <div class="breadcrumb">🏠 &gt; Cursos &gt; Cursos nuevos</div>
             <h2 class="catalog-title">Cursos <span>nuevos</span></h2>
-            <p class="results-count"><?= mysqli_num_rows($resultado) ?> resultados</p>
+            <p class="results-count"><?= $resultado->num_rows ?> resultados</p>
 
             <div class="content-grid">
                 <?php while ($curso = mysqli_fetch_assoc($resultado)): ?>
                     <div class="card">
-                        <img src="uploads/cursos/<?= htmlspecialchars($curso['imagen']) ?>" alt="<?= htmlspecialchars($curso['titulo']) ?>">
+                        <img src="../uploads/cursos/<?= htmlspecialchars($curso['imagen'], ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($curso['titulo'], ENT_QUOTES, 'UTF-8') ?>">
                         <div class="card-body">
-                            <h4><?= htmlspecialchars($curso['titulo']) ?></h4>
-                            <span><?= htmlspecialchars($curso['nombre_institucion']) ?></span>
-                            <p><?= htmlspecialchars($curso['descripcion']) ?></p>
+                            <h4><?= htmlspecialchars($curso['titulo'], ENT_QUOTES, 'UTF-8') ?></h4>
+                            <span><?= htmlspecialchars($curso['nombre_institucion'], ENT_QUOTES, 'UTF-8') ?></span>
+                            <p><?= htmlspecialchars($curso['descripcion'], ENT_QUOTES, 'UTF-8') ?></p>
                             <div class="card-hours"><?= $curso['duracion_horas'] ?> horas</div>
                             <div class="card-tags">
-                                <span><?= htmlspecialchars($curso['area']) ?></span>
+                                <span><?= htmlspecialchars($curso['area'], ENT_QUOTES, 'UTF-8') ?></span>
                                 <span><?= $curso['certificado_gratis'] ? 'Gratis' : 'Con costo' ?></span>
                             </div>
                             <a href="curso_detalle.php?id=<?= $curso['id'] ?>" class="btn-primary">Acceder</a>

@@ -1,22 +1,34 @@
 <?php
 require "conexion.php";
 
-$id = intval($_GET['id']);
+$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+if (!$id || $id < 1) {
+    http_response_code(404);
+    exit('Curso no encontrado.');
+}
 
-$curso = mysqli_query($conexion, "
-    SELECT c.*, i.nombre AS nombre_institucion 
+$stmt = $conexion->prepare("SELECT c.*, i.nombre AS nombre_institucion
     FROM cursos c
     JOIN instituciones i ON c.id_institucion = i.id
-    WHERE c.id = $id
-");
-$curso = mysqli_fetch_assoc($curso);
+    WHERE c.id = ? AND c.estado = 'aprobado'");
+$stmt->bind_param('i', $id);
+$stmt->execute();
+$curso = $stmt->get_result()->fetch_assoc();
+$stmt->close();
 
-$acompanantes = mysqli_query($conexion, "
-    SELECT s.*, u.nombre AS nombre_acompanante
+if (!$curso) {
+    http_response_code(404);
+    exit('Curso no encontrado.');
+}
+
+$stmt = $conexion->prepare("SELECT s.*, u.nombre AS nombre_acompanante
     FROM servicios_acompanamiento s
     JOIN usuarios u ON s.id_usuario = u.id
-    WHERE s.id_curso = $id AND s.activo = 1
-");
+    WHERE s.id_curso = ? AND s.activo = 1");
+$stmt->bind_param('i', $id);
+$stmt->execute();
+$acompanantes = $stmt->get_result();
+$stmt->close();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -42,21 +54,21 @@ $acompanantes = mysqli_query($conexion, "
     </header>
 
     <main class="course-detail">
-        <img src="uploads/cursos/<?= htmlspecialchars($curso['imagen']) ?>" alt="<?= htmlspecialchars($curso['titulo']) ?>">
+        <img src="../uploads/cursos/<?= htmlspecialchars($curso['imagen'], ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($curso['titulo'], ENT_QUOTES, 'UTF-8') ?>">
 
-        <h1><?= htmlspecialchars($curso['titulo']) ?></h1>
-        <p><strong>Institución:</strong> <?= htmlspecialchars($curso['nombre_institucion']) ?></p>
+        <h1><?= htmlspecialchars($curso['titulo'], ENT_QUOTES, 'UTF-8') ?></h1>
+        <p><strong>Institución:</strong> <?= htmlspecialchars($curso['nombre_institucion'], ENT_QUOTES, 'UTF-8') ?></p>
         <p><strong>Duración:</strong> <?= $curso['duracion_horas'] ?> horas</p>
-        <p><strong>Área:</strong> <?= htmlspecialchars($curso['area']) ?></p>
+        <p><strong>Área:</strong> <?= htmlspecialchars($curso['area'], ENT_QUOTES, 'UTF-8') ?></p>
         <p><strong>Certificado:</strong> <?= $curso['certificado_gratis'] ? 'Gratis' : 'Con costo' ?></p>
 
         <h2>Sobre este curso</h2>
-        <p><?= htmlspecialchars($curso['descripcion']) ?></p>
+        <p><?= htmlspecialchars($curso['descripcion'], ENT_QUOTES, 'UTF-8') ?></p>
 
-        <a href="<?= htmlspecialchars($curso['link_original']) ?>" target="_blank" class="btn-primary">Ir al curso</a>
+        <a href="<?= htmlspecialchars($curso['link_original'], ENT_QUOTES, 'UTF-8') ?>" target="_blank" rel="noopener noreferrer" class="btn-primary">Ir al curso</a>
 
         <h2>Acompañantes disponibles</h2>
-        <?php if (mysqli_num_rows($acompanantes) > 0): ?>
+        <?php if ($acompanantes->num_rows > 0): ?>
             <div class="acompanantes-grid">
                 <?php while ($a = mysqli_fetch_assoc($acompanantes)): ?>
                     <div class="acompanante-card">

@@ -2,63 +2,115 @@
 session_start();
 require 'conexion.php';
 
-if (!isset($_SESSION['id_usuario'])) {
+if (!isset($_SESSION['user_id']) && !isset($_SESSION['id_usuario'])) {
     header("Location: login.php");
     exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+$id_usuario_sesion = (int) ($_SESSION['user_id'] ?? $_SESSION['id_usuario']);
 
-    $titulo = $conexion->real_escape_string($_POST['titulo']);
-    $descripcion = $conexion->real_escape_string($_POST['descripcion']);
-    $nombre_institucion = trim($conexion->real_escape_string($_POST['institucion']));
-    $duracion = intval($_POST['duracion_horas']);
-    $area = $conexion->real_escape_string($_POST['area']);
-    $link = $conexion->real_escape_string($_POST['link_original']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $titulo = trim($_POST['titulo'] ?? '');
+    $descripcion = trim($_POST['descripcion'] ?? '');
+    $nombre_institucion = trim($_POST['institucion'] ?? '');
+    $duracion = filter_input(INPUT_POST, 'duracion_horas', FILTER_VALIDATE_INT);
+    $area = trim($_POST['area'] ?? '');
+    $link = trim($_POST['link_original'] ?? '');
     $certificado_gratis = isset($_POST['certificado_gratis']) ? 1 : 0;
-    $id_usuario = $_SESSION['id_usuario'];
+    $id_usuario = $id_usuario_sesion;
+
+    if ($titulo === '' || $descripcion === '' || $nombre_institucion === '' || !$duracion || $duracion < 1 || $area === '' || !filter_var($link, FILTER_VALIDATE_URL)) {
+        header("Location: Crear_curso.php?error=datos_invalidos");
+        exit;
+    }
 
     $imagen = '';
-    if (isset($_FILES['imagen']) && $_FILES['imagen']['name'] != '') {
-        $imagen = time() . "_" . $_FILES['imagen']['name'];
-        move_uploaded_file($_FILES['imagen']['tmp_name'], "uploads/cursos/" . $imagen);
+    if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] !== UPLOAD_ERR_NO_FILE) {
+        if ($_FILES['imagen']['error'] !== UPLOAD_ERR_OK) {
+            header("Location: Crear_curso.php?error=imagen");
+            exit;
+        }
+        $extension = strtolower(pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION));
+        if (!in_array($extension, ['jpg', 'jpeg', 'png', 'webp'], true)) {
+            header("Location: Crear_curso.php?error=imagen");
+            exit;
+        }
+        $imagen = bin2hex(random_bytes(12)) . '.' . $extension;
+        if (!move_uploaded_file($_FILES['imagen']['tmp_name'], __DIR__ . '/../uploads/cursos/' . $imagen)) {
+            header("Location: Crear_curso.php?error=imagen");
+            exit;
+        }
     }
 
-    $buscar = $conexion->query("SELECT id FROM instituciones WHERE LOWER(TRIM(nombre)) = LOWER('$nombre_institucion')");
-    if ($buscar->num_rows > 0) {
-        $id_institucion = $buscar->fetch_assoc()['id'];
-    } else {
-        $conexion->query("INSERT INTO instituciones (nombre) VALUES ('$nombre_institucion')");
-        $id_institucion = $conexion->insert_id;
-    }
+    $conexion->begin_transaction();
+    try {
+        $buscar = $conexion->prepare("SELECT id FROM instituciones WHERE LOWER(TRIM(nombre)) = LOWER(?) LIMIT 1");
+        $buscar->bind_param('s', $nombre_institucion);
+        $buscar->execute();
+        $institucion = $buscar->get_result()->fetch_assoc();
+        $buscar->close();
 
-    $conexion->query("INSERT INTO cursos 
-        (titulo, descripcion, id_institucion, duracion_horas, area, link_original, certificado_gratis, imagen, id_usuario_creador, estado)
-        VALUES 
-        ('$titulo', '$descripcion', $id_institucion, $duracion, '$area', '$link', $certificado_gratis, '$imagen', $id_usuario, 'pendiente')");
-
-    $id_curso_nuevo = $conexion->insert_id;
-
-    if (isset($_POST['ofrecer_acompanamiento'])) {
-        $modalidad = $_POST['modalidad'];
-        $precio = floatval($_POST['precio']);
-        $requiere_video = isset($_POST['requiere_videollamada']) ? 1 : 0;
-        $desc_servicio = $conexion->real_escape_string($_POST['descripcion_servicio']);
-
-        $archivo_certificado = '';
-        if (isset($_FILES['certificado']) && $_FILES['certificado']['name'] != '') {
-            $archivo_certificado = time() . "_" . $_FILES['certificado']['name'];
-            move_uploaded_file($_FILES['certificado']['tmp_name'], "uploads/certificados/" . $archivo_certificado);
+        if ($institucion) {
+            $id_institucion = (int) $institucion['id'];
+        } else {
+            $insertar_institucion = $conexion->prepare("INSERT INTO instituciones (nombre) VALUES (?)");
+            $insertar_institucion->bind_param('s', $nombre_institucion);
+            $insertar_institucion->execute();
+            $id_institucion = $insertar_institucion->insert_id;
+            $insertar_institucion->close();
         }
 
-        $conexion->query("INSERT INTO certificaciones (id_usuario, id_curso, archivo_certificado, estado)
-                           VALUES ($id_usuario, $id_curso_nuevo, '$archivo_certificado', 'pendiente')");
-        $id_certificacion = $conexion->insert_id;
+        $insertar_curso = $conexion->prepare("INSERT INTO cursos
+            (titulo, descripcion, id_institucion, duracion_horas, area, link_original, certificado_gratis, imagen, id_usuario_creador, estado)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'pendiente')");
+        $insertar_curso->bind_param('ssiissisi', $titulo, $descripcion, $id_institucion, $duracion, $area, $link, $certificado_gratis, $imagen, $id_usuario);
+        $insertar_curso->execute();
+        $id_curso_nuevo = $insertar_curso->insert_id;
+        $insertar_curso->close();
 
-        $conexion->query("INSERT INTO servicios_acompanamiento 
-            (id_usuario, id_curso, id_certificacion, modalidad, precio, requiere_videollamada, descripcion, activo)
-            VALUES 
-            ($id_usuario, $id_curso_nuevo, $id_certificacion, '$modalidad', $precio, $requiere_video, '$desc_servicio', 0)");
+        if (isset($_POST['ofrecer_acompanamiento'])) {
+            $modalidad = $_POST['modalidad'] ?? '';
+            $precio = filter_input(INPUT_POST, 'precio', FILTER_VALIDATE_FLOAT);
+            $requiere_video = isset($_POST['requiere_videollamada']) ? 1 : 0;
+            $desc_servicio = trim($_POST['descripcion_servicio'] ?? '');
+            if (!in_array($modalidad, ['basica', 'completado'], true) || $precio === false || $precio < 0 || $desc_servicio === '') {
+                throw new RuntimeException('Datos de acompañamiento inválidos.');
+            }
+
+            $archivo_certificado = '';
+            if (isset($_FILES['certificado']) && $_FILES['certificado']['error'] !== UPLOAD_ERR_NO_FILE) {
+                if ($_FILES['certificado']['error'] !== UPLOAD_ERR_OK) {
+                    throw new RuntimeException('Certificado inválido.');
+                }
+                $extension = strtolower(pathinfo($_FILES['certificado']['name'], PATHINFO_EXTENSION));
+                if (!in_array($extension, ['pdf', 'jpg', 'jpeg', 'png'], true)) {
+                    throw new RuntimeException('Certificado inválido.');
+                }
+                $archivo_certificado = bin2hex(random_bytes(12)) . '.' . $extension;
+                if (!move_uploaded_file($_FILES['certificado']['tmp_name'], __DIR__ . '/../uploads/certificados/' . $archivo_certificado)) {
+                    throw new RuntimeException('No se pudo guardar el certificado.');
+                }
+            }
+
+            $insertar_certificacion = $conexion->prepare("INSERT INTO certificaciones (id_usuario, id_curso, archivo_certificado, estado) VALUES (?, ?, ?, 'pendiente')");
+            $insertar_certificacion->bind_param('iis', $id_usuario, $id_curso_nuevo, $archivo_certificado);
+            $insertar_certificacion->execute();
+            $id_certificacion = $insertar_certificacion->insert_id;
+            $insertar_certificacion->close();
+
+            $insertar_servicio = $conexion->prepare("INSERT INTO servicios_acompanamiento
+                (id_usuario, id_curso, id_certificacion, modalidad, precio, requiere_videollamada, descripcion, activo)
+                VALUES (?, ?, ?, ?, ?, ?, ?, 0)");
+            $insertar_servicio->bind_param('iiisdis', $id_usuario, $id_curso_nuevo, $id_certificacion, $modalidad, $precio, $requiere_video, $desc_servicio);
+            $insertar_servicio->execute();
+            $insertar_servicio->close();
+        }
+
+        $conexion->commit();
+    } catch (Throwable $error) {
+        $conexion->rollback();
+        header("Location: Crear_curso.php?error=guardar");
+        exit;
     }
 
     header("Location: catalogo.php?mensaje=curso_enviado");
