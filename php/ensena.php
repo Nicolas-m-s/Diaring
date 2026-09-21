@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Diaring - Enseña en Diaring</title>
-    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
 </head>
 <body>
     <!-- HEADER COMPARTIDO -->
@@ -13,13 +13,13 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="catalogo.html">Catalogo</a></li>
-                <li><a href="recursos.html">Recursos</a></li>
-                <li><a href="ensena.html" class="active">Enseña en diaring</a></li>
-                <li><a href="perfil.html">Perfil</a></li>
-                <li><a href="login.html" class="nav-login">Iniciar Sesión</a></li>
-                <li><a href="registro.html" class="nav-register">Registrarse</a></li>
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="catalogo.php">Catalogo</a></li>
+                <li><a href="recursos.php">Recursos</a></li>
+                <li><a href="ensena.php" class="active">Enseña en diaring</a></li>
+                <li><a href="perfil.php">Perfil</a></li>
+                <li><a href="login.php" class="nav-login">Iniciar Sesión</a></li>
+                <li><a href="registro.php" class="nav-register">Registrarse</a></li>
             </ul>
         </nav>
     </header>
@@ -29,12 +29,12 @@
                 ¡Destina los primeros acompañantes de <span>Diaring!</span>
             </div>
             <video class="videoapre" autoplay muted loop>
-                <source src="assets/IMG/videoapre.mp4" type="video/mp4">
+                <source src="../assets/IMG/videoapre.mp4" type="video/mp4">
             </video>
             <div class="teach-hero-content">
                 <h2>Comparte tu logro y <span>cobra</span> por eso.</h2>
                 <p>Únete como <span>acompañante</span> y convierte tu certificación en una oportunidad.</p>
-                <a href="#" class="btn-primary" style="display: inline-block;">Quiero ser acompañante</a>
+                <a href="crear_curso.php" class="btn-primary" style="display: inline-block;">Quiero ser acompañante</a>
                 
                 <div class="teach-categories-tags">
                     <span>Edicion</span>
@@ -63,7 +63,7 @@
                     <p>Cada acompañamiento suma valoraciones que te dan más visibilidad dentro de Diaring.</p>
                 </div>
                 <div class="step-image">
-                    <img src="IMG/ensena1pag.jpg" alt="Intercambio de dinero">
+                    <img src="../assets/IMG/ensena1pag.jpg" alt="Intercambio de dinero">
                 </div>
             </div>
         </section>
@@ -73,14 +73,14 @@
 
             <div class="requirements-cards-grid">
                 <div class="requirement-box">
-                    <img src="IMG/ensena2.png" alt="Certificado curso">
+                    <img src="../assets/IMG/ensena2.png" alt="Certificado curso">
                     <div class="req-content">
                         <span class="req-check">✔</span>
                         <span>Certificación válida del curso que quieres acompañar.</span>
                     </div>
                 </div>
                 <div class="requirement-box">
-                    <img src="IMG/ensena3.png" alt="Validación soporte">
+                    <img src="../assets/IMG/ensena3.png" alt="Validación soporte">
                     <div class="req-content">
                         <span class="req-check">✔</span>
                         <span>Validación de credenciales, por el equipo de Diaring.</span>
@@ -121,4 +121,3 @@
     </footer>
 </body>
 </html>
-<!-- no coje el github -->

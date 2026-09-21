@@ -412,6 +412,36 @@ nav ul li a.active {
     color: #2ecc71;
 }
 
+.catalog-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 18px 0 12px;
+    max-width: 720px;
+}
+
+.catalog-search input[type="search"] {
+    flex: 1;
+    min-width: 0;
+    padding: 11px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+.catalog-search input[type="search"]:focus {
+    border-color: #2ecc71;
+    box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.15);
+}
+
+.catalog-clear {
+    color: #1e6b46;
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
 .results-count {
     font-size: 13px;
     color: #666;
@@ -859,21 +889,13 @@ nav ul li a.active {
    ========================================== */
 .teach-hero {
     position: relative;
-<<<<<<< HEAD
-    min-height: 600px;
-=======
     min-height: 500px;
->>>>>>> origin/main
     margin: 10px 35px 0;
     padding: 0 35px 30px;
     color: #fff;
     overflow: hidden;
     border-radius: 18px;
-<<<<<<< HEAD
-    background-color: #ffffff;
-=======
     background-color: #111;
->>>>>>> origin/main
 }
 .teach-hero .videoapre {
     position: absolute;
@@ -902,11 +924,7 @@ nav ul li a.active {
     z-index: 2;
     background-color: #000;
     color: #fff;
-<<<<<<< HEAD
-    border: 10px solid #ffffff;
-=======
     border: 1px solid #333;
->>>>>>> origin/main
     padding: 10px 18px;
     border-radius: 20px;
     display: block;
@@ -1076,11 +1094,7 @@ nav ul li a.active {
     justify-content: center;
     align-items: center;
     padding: 60px 20px;
-<<<<<<< HEAD
-    background: linear-gradient(to bottom, #ffffff 50%, #ffffff 50%);
-=======
     background: linear-gradient(to bottom, #ffffff 50%, #82c99a 50%);
->>>>>>> origin/main
     flex: 1;
 }
 
@@ -1113,7 +1127,6 @@ nav ul li a.active {
 .auth-form-wrapper h2 span {
     color: #2ecc71;
 }
-
 .auth-subtitle {
     font-size: 13px;
     color: #666;
@@ -1163,19 +1176,11 @@ nav ul li a.active {
 }
 
 .btn-auth:hover {
-<<<<<<< HEAD
-    background-color: #2ecc71;
-}
-
-.btn-google {
-    background-color: #2ecc71;
-=======
     background-color: #27ae60;
 }
 
 .btn-google {
     background-color: #55bc80;
->>>>>>> origin/main
     color: #fff;
     border: none;
     padding: 12px;
@@ -1201,11 +1206,7 @@ nav ul li a.active {
 }
 
 .auth-link a {
-<<<<<<< HEAD
-    color: #0cdf64;
-=======
     color: #2ecc71;
->>>>>>> origin/main
     text-decoration: none;
     font-weight: bold;
 }
@@ -1852,4 +1853,9 @@ footer {
     font-weight: bold;
     color: #111827;
     padding-left: 15px;
+}
+
+.sidebar-menu li a:hover,
+.sidebar-categories li a.active {
+    color: #2ecc71;
 }

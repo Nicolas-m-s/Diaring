@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Diaring - Recursos</title>
-    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
 </head>
 <body>
     <header>
@@ -12,13 +12,13 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="catalogo.html">Catalogo</a></li>
-                <li><a href="recursos.html" class="active">Recursos</a></li>
-                <li><a href="ensena.html">Enseña en diaring</a></li>
-                <li><a href="perfil.html">Perfil</a></li>
-                <li><a href="login.html" class="nav-login">Iniciar Sesión</a></li>
-                <li><a href="registro.html" class="nav-register">Registrarse</a></li>
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="catalogo.php">Catalogo</a></li>
+                <li><a href="recursos.php" class="active">Recursos</a></li>
+                <li><a href="ensena.php">Enseña en diaring</a></li>
+                <li><a href="perfil.php">Perfil</a></li>
+                <li><a href="login.php" class="nav-login">Iniciar Sesión</a></li>
+                <li><a href="registro.php" class="nav-register">Registrarse</a></li>
             </ul>
         </nav>
     </header>

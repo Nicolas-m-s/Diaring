@@ -35,7 +35,7 @@ $stmt->close();
 <head>
     <meta charset="UTF-8">
     <title>Diaring - <?= htmlspecialchars($curso['titulo']) ?></title>
-    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
 </head>
 <body>
     <header>
@@ -54,7 +54,13 @@ $stmt->close();
     </header>
 
     <main class="course-detail">
-        <img src="../uploads/cursos/<?= htmlspecialchars($curso['imagen'], ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($curso['titulo'], ENT_QUOTES, 'UTF-8') ?>">
+        <?php
+        $imagenCurso = trim((string) $curso['imagen']);
+        $imagenUrl = $imagenCurso !== ''
+            ? '../uploads/cursos/' . rawurlencode($imagenCurso)
+            : '../assets/IMG/inicio.jpg';
+        ?>
+        <img src="<?= htmlspecialchars($imagenUrl, ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($curso['titulo'], ENT_QUOTES, 'UTF-8') ?>">
 
         <h1><?= htmlspecialchars($curso['titulo'], ENT_QUOTES, 'UTF-8') ?></h1>
         <p><strong>Institución:</strong> <?= htmlspecialchars($curso['nombre_institucion'], ENT_QUOTES, 'UTF-8') ?></p>

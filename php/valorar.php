@@ -6,7 +6,7 @@ session_start();
 require_once __DIR__ . '/conexion.php'; // Debe definir $pdo (PDO con ERRMODE_EXCEPTION)
 
 if (empty($_SESSION['usuario_id'])) {
-    header('Location: login.html');
+    header('Location: login.php');
     exit;
 }
 $clienteId = (int) $_SESSION['usuario_id'];
@@ -82,7 +82,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valorar acompañamiento</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
 </head>
 <body>
     <h1>¿Cómo fue tu acompañamiento?</h1>

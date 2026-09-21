@@ -2,7 +2,18 @@
 session_start();
 require_once __DIR__ . '/conexion.php';
 
-if (empty($_SESSION['user_id']) || ($_SESSION['user_rol'] ?? '') !== 'admin') {
+if (empty($_SESSION['user_id'])) {
+	http_response_code(403);
+	exit('No tienes permisos para acceder a esta sección.');
+}
+
+$acceso = $conexion->prepare('SELECT rol FROM usuarios WHERE id = ? LIMIT 1');
+$acceso->bind_param('i', $_SESSION['user_id']);
+$acceso->execute();
+$rolActual = $acceso->get_result()->fetch_assoc()['rol'] ?? null;
+$acceso->close();
+
+if ($rolActual !== 'admin') {
 	http_response_code(403);
 	exit('No tienes permisos para acceder a esta sección.');
 }

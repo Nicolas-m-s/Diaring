@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Diaring - Inicio</title>
-    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
 </head>
 <body>
     <!-- HEADER COMPARTIDO -->
@@ -13,13 +13,13 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html" class="active">Inicio</a></li>
-                <li><a href="catalogo.html">Catalogo</a></li>
-                <li><a href="recursos.html">Recursos</a></li>
-                <li><a href="ensena.html">Enseña en diaring</a></li>
-                <li><a href="perfil.html">Perfil</a></li>
-                <li><a href="login.html" class="nav-login">Iniciar Sesión</a></li>
-                <li><a href="registro.html" class="nav-register">Registrarse</a></li>
+                <li><a href="index.php" class="active">Inicio</a></li>
+                <li><a href="catalogo.php">Catalogo</a></li>
+                <li><a href="recursos.php">Recursos</a></li>
+                <li><a href="ensena.php">Enseña en diaring</a></li>
+                <li><a href="perfil.php">Perfil</a></li>
+                <li><a href="login.php" class="nav-login">Iniciar Sesión</a></li>
+                <li><a href="registro.php" class="nav-register">Registrarse</a></li>
             </ul>
         </nav>
     </header>
@@ -27,7 +27,7 @@
         <!-- Hero Section -->
         <section class="hero-section">
             <video autoplay muted loop>
-                <source src="IMG/videoini.mp4" type="video/mp4">
+                <source src="../assets/IMG/videoini.mp4" type="video/mp4">
         
             </video>
             <div class="hero-badge">
@@ -37,8 +37,8 @@
                 <h2>Aprende con quienes ya lo hicieron</h2>
                 <p>Descubra cursos gratis y certificaciones de instituciones reconocidas, con el acompañamiento que necesitas para terminar.</p>
                 <div class="hero-buttons">
-                    <a href="catalogo.html" class="btn-primary">Explorar catalogo</a>
-                    <a href="ensena.html" class="btn-secondary">Contratar ayuda</a>
+                    <a href="catalogo.php" class="btn-primary">Explorar catalogo</a>
+                    <a href="ensena.php" class="btn-secondary">Contratar ayuda</a>
                 </div>
             </div>
         </section>
@@ -73,7 +73,7 @@
             </div>
 
             <div class="companions-image">
-                <img src="IMG/inicio.jpg" alt="Graduación y título">
+                <img src="../assets/IMG/inicio.jpg" alt="Graduación y título">
             </div>
         </section>
         <section class="guarantee-section">

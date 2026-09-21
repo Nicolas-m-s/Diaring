@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Hashea la contraseña antes de guardarla
     $hash = password_hash($password, PASSWORD_DEFAULT);
-    $foto = "IMG/default.png";
+    $foto = "assets/IMG/ini.jpg";
     $rol = "usuario"; // OJO: en tu tabla el ENUM es 'usuario', no 'usuarios'
 
     $sql = "INSERT INTO usuarios (nombre, correo, contrasena, foto, rol, fecha_registro) 
@@ -67,3 +67,67 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diaring - Registrarse</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo-area"><h1>Diaring</h1></div>
+        <nav>
+            <ul>
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="catalogo.php">Catálogo</a></li>
+                <li><a href="recursos.php">Recursos</a></li>
+                <li><a href="ensena.php">Enseña en Diaring</a></li>
+                <li><a href="login.php" class="nav-login">Iniciar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="auth-section">
+        <div class="auth-container">
+            <div class="auth-form-wrapper">
+                <h2>Certifícate. <span>sin excusas</span></h2>
+                <p class="auth-subtitle">Nuestros cursos te esperan.</p>
+                <?php
+                $mensajes = [
+                    'vacio' => 'Completa todos los campos.',
+                    'correo' => 'Escribe un correo válido.',
+                    'password_corta' => 'La contraseña debe tener al menos 8 caracteres.',
+                    'existe' => 'Ese correo ya está registrado.',
+                    '1' => 'No se pudo completar el registro.',
+                ];
+                $codigoError = $_GET['error'] ?? '';
+                if (isset($mensajes[$codigoError])):
+                ?>
+                    <p style="color: #b91c1c;" role="alert"><?= htmlspecialchars($mensajes[$codigoError]) ?></p>
+                <?php endif; ?>
+                <form action="registro.php" method="post">
+                    <div class="form-group">
+                        <label for="correo">Correo electrónico</label>
+                        <input id="correo" type="email" name="correo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input id="password" type="password" name="password" minlength="8" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Nombre de usuario</label>
+                        <input id="nombre" type="text" name="nombre" required>
+                    </div>
+                    <button type="submit" class="btn-auth">Registrarse</button>
+                </form>
+                <div class="auth-link">¿Ya te has registrado? <a href="login.php">Inicia sesión aquí</a></div>
+            </div>
+            <div class="auth-image-wrapper">
+                <img src="../assets/IMG/ini.jpg" alt="Graduados celebrando">
+            </div>
+        </div>
+    </main>
+</body>
+</html>

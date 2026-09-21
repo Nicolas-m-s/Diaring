@@ -1,20 +1,50 @@
 <?php
 require "conexion.php";
 
-$sql = "SELECT c.*, i.nombre AS nombre_institucion 
+$busqueda = trim($_GET['q'] ?? '');
+$categoria = trim($_GET['categoria'] ?? '');
+$tipo = $_GET['tipo'] ?? '';
+$condiciones = ["c.estado = 'aprobado'"];
+$parametros = [];
+$tipos = '';
+
+if ($busqueda !== '') {
+    $condiciones[] = '(c.titulo LIKE ? OR c.descripcion LIKE ? OR c.area LIKE ? OR i.nombre LIKE ?)';
+    $texto = '%' . $busqueda . '%';
+    array_push($parametros, $texto, $texto, $texto, $texto);
+    $tipos .= 'ssss';
+}
+
+if ($categoria !== '') {
+    $condiciones[] = 'c.area = ?';
+    $parametros[] = $categoria;
+    $tipos .= 's';
+}
+
+if ($tipo === 'gratis') {
+    $condiciones[] = 'c.certificado_gratis = 1';
+} elseif ($tipo === 'pago') {
+    $condiciones[] = 'c.certificado_gratis = 0';
+}
+
+$sql = "SELECT c.*, i.nombre AS nombre_institucion
         FROM cursos c
         JOIN instituciones i ON c.id_institucion = i.id
-        WHERE c.estado = 'aprobado'
+        WHERE " . implode(' AND ', $condiciones) . "
         ORDER BY c.id DESC";
-
-$resultado = $conexion->query($sql);
+$stmt = $conexion->prepare($sql);
+if ($parametros) {
+    $stmt->bind_param($tipos, ...$parametros);
+}
+$stmt->execute();
+$resultado = $stmt->get_result();
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Diaring - Catálogo</title>
-    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
 </head>
 <body>
     <header>
@@ -37,34 +67,44 @@ $resultado = $conexion->query($sql);
     <main class="main-container">
         <aside class="sidebar">
             <ul class="sidebar-menu">
-                <li><a href="#" class="active">Cursos nuevos</a></li>
-                <li><a href="#">Cursos promocion</a></li>
-                <li><a href="#">Cursos gratis</a></li>
-                <li><a href="#">Cursos de pago</a></li>
+                <li><a href="catalogo.php" class="active">Cursos nuevos</a></li>
+                <li><a href="catalogo.php?tipo=gratis">Cursos gratis</a></li>
+                <li><a href="catalogo.php?tipo=pago">Cursos de pago</a></li>
             </ul>
 
             <h3>Categoria</h3>
             <ul class="sidebar-categories">
-                <li><a href="#">Liderazgo</a></li>
-                <li><a href="#">Dibujo</a></li>
-                <li><a href="#">Idiomas</a></li>
-                <li><a href="#">Software</a></li>
-                <li><a href="#">Finanzas</a></li>
-                <li><a href="#">Marketing</a></li>
-                <li><a href="#">Diseño</a></li>
-                <li><a href="#">Arte</a></li>
+                <?php foreach (['Liderazgo', 'Dibujo', 'Idiomas', 'Software', 'Finanzas', 'Marketing', 'Diseño', 'Arte'] as $nombreCategoria): ?>
+                    <li><a href="catalogo.php?categoria=<?= rawurlencode($nombreCategoria) ?>" class="<?= $categoria === $nombreCategoria ? 'active' : '' ?>"><?= htmlspecialchars($nombreCategoria) ?></a></li>
+                <?php endforeach; ?>
             </ul>
         </aside>
 
         <section class="catalog-content">
             <div class="breadcrumb">🏠 &gt; Cursos &gt; Cursos nuevos</div>
             <h2 class="catalog-title">Cursos <span>nuevos</span></h2>
+            <form class="catalog-search" method="get" action="catalogo.php">
+                <input type="search" name="q" value="<?= htmlspecialchars($busqueda, ENT_QUOTES, 'UTF-8') ?>" placeholder="Buscar cursos, áreas o instituciones..." aria-label="Buscar cursos">
+                <?php if ($categoria !== ''): ?><input type="hidden" name="categoria" value="<?= htmlspecialchars($categoria, ENT_QUOTES, 'UTF-8') ?>"><?php endif; ?>
+                <?php if ($tipo !== ''): ?><input type="hidden" name="tipo" value="<?= htmlspecialchars($tipo, ENT_QUOTES, 'UTF-8') ?>"><?php endif; ?>
+                <button type="submit" class="btn-primary">Buscar</button>
+                <?php if ($busqueda !== '' || $categoria !== '' || $tipo !== ''): ?><a class="catalog-clear" href="catalogo.php">Limpiar</a><?php endif; ?>
+            </form>
+            <?php if (($_GET['mensaje'] ?? '') === 'curso_enviado'): ?>
+                <p role="status" style="color: #166534; margin: 12px 0;">Tu curso se guardó y está pendiente de aprobación. Aparecerá en el catálogo cuando un administrador lo apruebe.</p>
+            <?php endif; ?>
             <p class="results-count"><?= $resultado->num_rows ?> resultados</p>
 
             <div class="content-grid">
                 <?php while ($curso = mysqli_fetch_assoc($resultado)): ?>
                     <div class="card">
-                        <img src="../uploads/cursos/<?= htmlspecialchars($curso['imagen'], ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($curso['titulo'], ENT_QUOTES, 'UTF-8') ?>">
+                        <?php
+                        $imagenCurso = trim((string) $curso['imagen']);
+                        $imagenUrl = $imagenCurso !== ''
+                            ? '../uploads/cursos/' . rawurlencode($imagenCurso)
+                            : '../assets/IMG/inicio.jpg';
+                        ?>
+                        <img src="<?= htmlspecialchars($imagenUrl, ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($curso['titulo'], ENT_QUOTES, 'UTF-8') ?>">
                         <div class="card-body">
                             <h4><?= htmlspecialchars($curso['titulo'], ENT_QUOTES, 'UTF-8') ?></h4>
                             <span><?= htmlspecialchars($curso['nombre_institucion'], ENT_QUOTES, 'UTF-8') ?></span>

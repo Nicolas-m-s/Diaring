@@ -9,7 +9,7 @@ require_once __DIR__ . '/conexion.php'; // Debe definir $pdo (PDO con ERRMODE_EX
 const COMISION_PORCENTAJE = 10; // AJUSTAR: % que se queda la plataforma
 
 if (empty($_SESSION['usuario_id'])) {
-    header('Location: login.html');
+    header('Location: login.php');
     exit;
 }
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

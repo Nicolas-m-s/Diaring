@@ -7,7 +7,7 @@ session_start();
 require_once __DIR__ . '/conexion.php'; // Debe definir $pdo (PDO con ERRMODE_EXCEPTION)
 
 if (empty($_SESSION['usuario_id'])) {
-    header('Location: login.html');
+    header('Location: login.php');
     exit;
 }
 $usuarioId = (int) $_SESSION['usuario_id'];

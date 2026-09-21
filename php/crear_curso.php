@@ -124,7 +124,7 @@ $existentes = $conexion->query("SELECT nombre FROM instituciones ORDER BY nombre
 <head>
     <meta charset="UTF-8">
     <title>Diaring - Sugerir curso</title>
-    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
 </head>
 <body>
     <header>

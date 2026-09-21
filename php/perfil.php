@@ -86,85 +86,69 @@ function e(string $value): string
 		</nav>
 	</header>
 
-	<main class="profile-container">
-		<div class="profile-banner"></div>
-		<section class="profile-header-row">
-			<div class="profile-user-info">
-				<img class="profile-avatar" src="<?= e($foto) ?>" alt="Foto de <?= e($usuario['nombre']) ?>">
-				<div>
-					<h2><?= e($usuario['nombre']) ?></h2>
-					<p><?= e($usuario['correo']) ?></p>
-				</div>
-			</div>
-			<a href="crear_curso.php" class="btn-primary">Sugerir curso</a>
-		</section>
-
-		<ul class="profile-tabs">
-			<li><a href="#actividad" class="active">Mi actividad</a></li>
-			<li><a href="#servicios">Acompañamientos</a></li>
-			<?php if ($usuario['rol'] === 'admin'): ?>
-				<li><a href="admin_curso.php">Administración</a></li>
-			<?php endif; ?>
-		</ul>
-
-		<section id="actividad" class="profile-layout">
-			<aside class="profile-sidebar">
-				<p><strong>Miembro desde</strong><br><?= e(date('d/m/Y', strtotime($usuario['fecha_registro']))) ?></p>
-				<p><strong>Certificaciones</strong><br><?= $certificaciones->num_rows ?></p>
-				<p><strong>Cursos sugeridos</strong><br><?= $cursos->num_rows ?></p>
-			</aside>
-			<div class="profile-main-content">
-				<h2 class="catalog-title">Cursos <span>sugeridos</span></h2>
-				<div class="content-grid">
-					<?php if ($cursos->num_rows === 0): ?>
-						<p>Aún no has sugerido cursos.</p>
-					<?php else: ?>
-						<?php while ($curso = $cursos->fetch_assoc()): ?>
-							<article class="card">
-								<div class="card-body">
-									<h4><?= e($curso['titulo']) ?></h4>
-									<span><?= e($curso['institucion']) ?></span>
-									<p>Estado: <strong><?= e(ucfirst($curso['estado'])) ?></strong></p>
-								</div>
-							</article>
-						<?php endwhile; ?>
-					<?php endif; ?>
-				</div>
-
-				<h2 id="certificaciones" class="catalog-title profile-section-title">Mis <span>certificaciones</span></h2>
-				<div class="profile-list">
-					<?php if ($certificaciones->num_rows === 0): ?>
-						<p>No tienes certificaciones enviadas.</p>
-					<?php else: ?>
-						<?php while ($cert = $certificaciones->fetch_assoc()): ?>
-							<div class="profile-list-item">
-								<div><strong><?= e($cert['titulo']) ?></strong><br><small><?= e($cert['archivo_certificado']) ?></small></div>
-								<span class="status status-<?= e($cert['estado']) ?>"><?= e(ucfirst($cert['estado'])) ?></span>
-							</div>
-						<?php endwhile; ?>
-					<?php endif; ?>
-				</div>
+	<main>
+		<section class="progress-page-header">
+			<div class="progress-header-content">
+				<span>Tu camino de aprendizaje</span>
+				<h1>Mi progreso</h1>
+				<p>Consulta tu actividad, tus cursos sugeridos y el estado de tus certificaciones.</p>
 			</div>
 		</section>
 
-		<section id="servicios" class="availability-section">
-			<div class="availability-info">
-				<h2>Mis <span>acompañamientos</span></h2>
-				<p>Consulta el estado de los servicios que has ofrecido a la comunidad.</p>
-				<?php if ($servicios->num_rows === 0): ?>
-					<p>Aún no tienes servicios publicados.</p>
+		<section class="profile-page-header">
+			<h1>Mi Perfil</h1>
+			<p>Gestiona tu aprendizaje y descubre cuánto has avanzado.</p>
+		</section>
+
+		<section class="profile-info-card">
+			<div class="profile-avatar"><img src="<?= e($foto) ?>" alt="Foto de <?= e($usuario['nombre']) ?>"></div>
+			<div class="profile-details">
+				<h2><?= e($usuario['nombre']) ?> <span class="level-badge">👑 <?= e(ucfirst($usuario['rol'])) ?></span></h2>
+				<p><?= e($usuario['correo']) ?></p>
+				<p>Miembro desde <?= e(date('d/m/Y', strtotime($usuario['fecha_registro']))) ?></p>
+				<p>Cursos sugeridos: <?= $cursos->num_rows ?></p>
+			</div>
+		</section>
+
+		<section class="profile-options-section">
+			<div class="section-divider-title">⚙️ Opciones de Perfil</div>
+			<div class="profile-options-grid">
+				<a href="crear_curso.php" class="profile-option-card"><div class="option-left"><div class="option-icon-box">📚</div><div class="option-info"><h3>Sugerir curso</h3><p>Comparte un curso nuevo</p></div></div><div class="option-arrow">&gt;</div></a>
+				<a href="logout.php" class="profile-option-card"><div class="option-left"><div class="option-icon-box">🚪</div><div class="option-info"><h3>Cerrar sesión</h3><p>Salir de tu cuenta</p></div></div><div class="option-arrow">&gt;</div></a>
+				<?php if ($usuario['rol'] === 'admin'): ?>
+				<a href="admin_curso.php" class="profile-option-card"><div class="option-left"><div class="option-icon-box">⚙️</div><div class="option-info"><h3>Administración</h3><p>Cursos y certificaciones</p></div></div><div class="option-arrow">&gt;</div></a>
 				<?php else: ?>
-					<div class="profile-list profile-list-dark">
-						<?php while ($servicio = $servicios->fetch_assoc()): ?>
-							<div class="profile-list-item">
-								<div><strong><?= e($servicio['titulo']) ?></strong><br><?= e(ucfirst($servicio['modalidad'])) ?> · $<?= number_format((float) $servicio['precio'], 2) ?></div>
-								<span class="status"><?= $servicio['activo'] && $servicio['certificacion_estado'] === 'aprobado' ? 'Activo' : 'En revisión' ?></span>
-							</div>
-						<?php endwhile; ?>
-					</div>
+				<a href="#certificaciones" class="profile-option-card"><div class="option-left"><div class="option-icon-box">✅</div><div class="option-info"><h3>Certificaciones</h3><p><?= $certificaciones->num_rows ?> enviadas</p></div></div><div class="option-arrow">&gt;</div></a>
 				<?php endif; ?>
 			</div>
 		</section>
+
+		<section class="courses-progress-section">
+			<div class="section-title-action"><h2>📖 Tus cursos sugeridos</h2><a href="catalogo.php">Ver catálogo →</a></div>
+			<div class="progress-courses-grid">
+				<?php if ($cursos->num_rows === 0): ?>
+					<p>Aún no has sugerido cursos.</p>
+				<?php else: ?>
+					<?php while ($curso = $cursos->fetch_assoc()): ?>
+						<article class="progress-course-card">
+							<img src="<?= e($curso['imagen'] ? '../uploads/cursos/' . $curso['imagen'] : '../assets/IMG/inicio.jpg') ?>" alt="<?= e($curso['titulo']) ?>">
+							<div class="progress-course-info"><h3><?= e($curso['titulo']) ?></h3><div class="progress-sub"><?= e($curso['institucion']) ?> · <?= e(ucfirst($curso['estado'])) ?></div><a class="btn-continue" href="curso_detalle.php?id=<?= (int) $curso['id'] ?>">Ver curso →</a></div>
+						</article>
+					<?php endwhile; ?>
+				<?php endif; ?>
+			</div>
+		</section>
+
+		<section id="certificaciones" class="profile-options-section">
+			<div class="section-divider-title">✅ Mis certificaciones (<?= $certificaciones->num_rows ?>)</div>
+			<div class="profile-list">
+				<?php if ($certificaciones->num_rows === 0): ?><p>No tienes certificaciones enviadas.</p><?php else: ?>
+					<?php while ($cert = $certificaciones->fetch_assoc()): ?><div class="profile-list-item"><strong><?= e($cert['titulo']) ?></strong><span class="status status-<?= e($cert['estado']) ?>"><?= e(ucfirst($cert['estado'])) ?></span></div><?php endwhile; ?>
+				<?php endif; ?>
+			</div>
+		</section>
+
+		<section id="servicios" class="availability-section"><div class="availability-info"><h2>Mis <span>acompañamientos</span></h2><p>Consulta el estado de los servicios que has ofrecido a la comunidad.</p><?php if ($servicios->num_rows === 0): ?><p>Aún no tienes servicios publicados.</p><?php else: ?><div class="profile-list profile-list-dark"><?php while ($servicio = $servicios->fetch_assoc()): ?><div class="profile-list-item"><strong><?= e($servicio['titulo']) ?></strong><span class="status"><?= $servicio['activo'] && $servicio['certificacion_estado'] === 'aprobado' ? 'Activo' : 'En revisión' ?></span></div><?php endwhile; ?></div><?php endif; ?></div></section>
 	</main>
 </body>
 </html>
