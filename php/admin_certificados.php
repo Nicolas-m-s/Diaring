@@ -66,16 +66,28 @@ function e(string $value): string
 	<link rel="stylesheet" href="../CSS/styles.css">
 </head>
 <body>
-	<header>
-		<div class="logo-area"><h1>Diaring</h1></div>
-		<nav><ul>
-			<li><a href="index.php">Inicio</a></li>
-			<li><a href="catalogo.php">Catálogo</a></li>
-			<li><a href="perfil.php">Perfil</a></li>
-			<li><a href="admin_curso.php">Cursos</a></li>
-			<li><a href="logout.php" class="nav-login">Cerrar sesión</a></li>
-		</ul></nav>
-	</header>
+<header>
+    <div class="logo-area">
+        <a href="index.php" class="logo-link">
+            <img src="../assets/IMG/Diaring_logo.png" alt="Logo de Diaring" class="logo">
+
+        </a>
+    </div>
+        <nav class="main_nav">
+            <ul>
+                <li><a href="index.php" class="active">Inicio</a></li>
+                <li><a href="catalogo.php">Catalogo</a></li>
+                <li><a href="recursos.php">Recursos</a></li>
+                <li><a href="ensena.php">Enseña en diaring</a></li>
+                <li><a href="perfil.php">Perfil</a></li>
+            </ul>
+        </nav>
+
+        <div class="auth-area">
+            <a href="login.php" class="nav-login">Iniciar Sesión</a>
+            <a href="registro.php" class="nav-register">Registrarse</a>
+        </div>
+    </header>
 	<main class="admin-container">
 		<div class="admin-heading"><div><p class="eyebrow">Panel de administración</p><h2>Validar <span>certificaciones</span></h2></div><a href="perfil.php" class="btn-secondary">Volver al perfil</a></div>
 		<p class="admin-intro">Verifica que el certificado corresponda al curso antes de activar el servicio de acompañamiento.</p>
