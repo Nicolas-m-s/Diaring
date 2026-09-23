@@ -41,19 +41,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="stylesheet" href="../CSS/styles.css">
 </head>
 <body>
-    <header>
-        <div class="logo-area"><h1>Diaring</h1></div>
-        <nav>
+<header>
+    <div class="logo-area">
+        <a href="index.php" class="logo-link">
+            <img src="../assets/IMG/Diaring_logo.png" alt="Logo de Diaring" class="logo">
+
+        </a>
+    </div>
+        <nav class="main_nav">
             <ul>
-                <li><a href="index.php">Inicio</a></li>
-                <li><a href="catalogo.php">Catálogo</a></li>
+                <li><a href="index.php" class="active">Inicio</a></li>
+                <li><a href="catalogo.php">Catalogo</a></li>
                 <li><a href="recursos.php">Recursos</a></li>
-                <li><a href="ensena.php">Enseña en Diaring</a></li>
-                <li><a href="registro.php" class="nav-register">Registrarse</a></li>
+                <li><a href="ensena.php">Enseña en diaring</a></li>
+                <li><a href="perfil.php">Perfil</a></li>
             </ul>
         </nav>
-    </header>
 
+        <div class="auth-area">
+            <a href="login.php" class="nav-login">Iniciar Sesión</a>
+            <a href="registro.php" class="nav-register">Registrarse</a>
+        </div>
+    </header>
     <main class="auth-section">
         <div class="auth-container">
             <div class="auth-form-wrapper">

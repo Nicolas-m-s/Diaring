@@ -6,22 +6,27 @@
     <link rel="stylesheet" href="../CSS/styles.css">
 </head>
 <body>
-    <!-- HEADER COMPARTIDO -->
-    <header>
-        <div class="logo-area">
-            <h1>Diaring</h1>
-        </div>
-        <nav>
+<header>
+    <div class="logo-area">
+        <a href="index.php" class="logo-link">
+            <img src="../assets/IMG/Diaring_logo.png" alt="Logo de Diaring" class="logo">
+
+        </a>
+    </div>
+        <nav class="main_nav">
             <ul>
-                <li><a href="index.php">Inicio</a></li>
+                <li><a href="index.php" class="active">Inicio</a></li>
                 <li><a href="catalogo.php">Catalogo</a></li>
                 <li><a href="recursos.php">Recursos</a></li>
-                <li><a href="ensena.php" class="active">Enseña en diaring</a></li>
+                <li><a href="ensena.php">Enseña en diaring</a></li>
                 <li><a href="perfil.php">Perfil</a></li>
-                <li><a href="login.php" class="nav-login">Iniciar Sesión</a></li>
-                <li><a href="registro.php" class="nav-register">Registrarse</a></li>
             </ul>
         </nav>
+
+        <div class="auth-area">
+            <a href="login.php" class="nav-login">Iniciar Sesión</a>
+            <a href="registro.php" class="nav-register">Registrarse</a>
+        </div>
     </header>
     <main>
         <section class="teach-hero">
