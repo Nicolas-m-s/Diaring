@@ -52,7 +52,7 @@ $stmt->execute();
 $servicios = $stmt->get_result();
 $stmt->close();
 
-$foto = '../assets/IMG/ini.jpg';
+$foto = '../assets/IMG/ti.png';
 if (!empty($usuario['foto'])) {
 	$fotoRelativa = ltrim($usuario['foto'], '/');
 	if (is_file(__DIR__ . '/../' . $fotoRelativa)) {
@@ -101,9 +101,9 @@ function e(string $value): string
 		</section>
 
 		<section class="profile-info-card">
-			<div class="profile-avatar"><img src="<?= e($foto) ?>" alt="Foto de <?= e($usuario['nombre']) ?>"></div>
+			<div class="profile-avatar"><img src="../assets/IMG/ti.png" alt="Foto de <?= e($usuario['nombre']) ?>"></div>
 			<div class="profile-details">
-				<h2><?= e($usuario['nombre']) ?> <span class="level-badge">👑 <?= e(ucfirst($usuario['rol'])) ?></span></h2>
+				<h2><?= e($usuario['nombre']) ?></h2>
 				<p><?= e($usuario['correo']) ?></p>
 				<p>Miembro desde <?= e(date('d/m/Y', strtotime($usuario['fecha_registro']))) ?></p>
 				<p>Cursos sugeridos: <?= $cursos->num_rows ?></p>
@@ -111,20 +111,20 @@ function e(string $value): string
 		</section>
 
 		<section class="profile-options-section">
-			<div class="section-divider-title">⚙️ Opciones de Perfil</div>
+			<div class="section-divider-title">Opciones de Perfil</div>
 			<div class="profile-options-grid">
-				<a href="crear_curso.php" class="profile-option-card"><div class="option-left"><div class="option-icon-box">📚</div><div class="option-info"><h3>Sugerir curso</h3><p>Comparte un curso nuevo</p></div></div><div class="option-arrow">&gt;</div></a>
-				<a href="logout.php" class="profile-option-card"><div class="option-left"><div class="option-icon-box">🚪</div><div class="option-info"><h3>Cerrar sesión</h3><p>Salir de tu cuenta</p></div></div><div class="option-arrow">&gt;</div></a>
+				<a href="crear_curso.php" class="profile-option-card"><div class="option-left"><div class="option-info"><h3>Sugerir curso</h3><p>Comparte un curso nuevo</p></div></div><div class="option-arrow">&gt;</div></a>
+				<a href="logout.php" class="profile-option-card"><div class="option-left"><div class="option-info"><h3>Cerrar sesión</h3><p>Salir de tu cuenta</p></div></div><div class="option-arrow">&gt;</div></a>
 				<?php if ($usuario['rol'] === 'admin'): ?>
-				<a href="admin_curso.php" class="profile-option-card"><div class="option-left"><div class="option-icon-box">⚙️</div><div class="option-info"><h3>Administración</h3><p>Cursos y certificaciones</p></div></div><div class="option-arrow">&gt;</div></a>
+				<a href="admin_curso.php" class="profile-option-card"><div class="option-left"><div class="option-info"><h3>Administración</h3><p>Cursos y certificaciones</p></div></div><div class="option-arrow">&gt;</div></a>
 				<?php else: ?>
-				<a href="#certificaciones" class="profile-option-card"><div class="option-left"><div class="option-icon-box">✅</div><div class="option-info"><h3>Certificaciones</h3><p><?= $certificaciones->num_rows ?> enviadas</p></div></div><div class="option-arrow">&gt;</div></a>
+				<a href="#certificaciones" class="profile-option-card"><div class="option-left"></div><div class="option-info"><h3>Certificaciones</h3><p><?= $certificaciones->num_rows ?> enviadas</p></div></div><div class="option-arrow">&gt;</div></a>
 				<?php endif; ?>
 			</div>
 		</section>
 
 		<section class="courses-progress-section">
-			<div class="section-title-action"><h2>📖 Tus cursos sugeridos</h2><a href="catalogo.php">Ver catálogo →</a></div>
+			<div class="section-title-action"><h2>Tus cursos sugeridos</h2><a href="catalogo.php">Ver catálogo →</a></div>
 			<div class="progress-courses-grid">
 				<?php if ($cursos->num_rows === 0): ?>
 					<p>Aún no has sugerido cursos.</p>
@@ -140,7 +140,7 @@ function e(string $value): string
 		</section>
 
 		<section id="certificaciones" class="profile-options-section">
-			<div class="section-divider-title">✅ Mis certificaciones (<?= $certificaciones->num_rows ?>)</div>
+			<div class="section-divider-title">Mis certificaciones (<?= $certificaciones->num_rows ?>)</div>
 			<div class="profile-list">
 				<?php if ($certificaciones->num_rows === 0): ?><p>No tienes certificaciones enviadas.</p><?php else: ?>
 					<?php while ($cert = $certificaciones->fetch_assoc()): ?><div class="profile-list-item"><strong><?= e($cert['titulo']) ?></strong><span class="status status-<?= e($cert['estado']) ?>"><?= e(ucfirst($cert['estado'])) ?></span></div><?php endwhile; ?>

@@ -141,7 +141,7 @@ nav ul li a.active {
     background-color: rgba(46, 204, 113, 0.2);
     border: 1px solid #2ecc71;
     padding: 6px 16px;
-    border-radius: 20px;
+    border-radius: 10px;
     font-size: 13px;
     color: #fff;
     margin-bottom: 20px;
@@ -1241,6 +1241,7 @@ footer {
     margin-top: auto;
 }
 
+
 .footer-container {
     max-width: 1100px;
     margin: 0 auto;
@@ -1270,6 +1271,17 @@ footer {
     justify-content: space-between;
     font-size: 0.8rem;
     color: #cbd5e1;
+}
+.footer-social {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-social img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
 }
 
 .resources-page-header {
@@ -1625,7 +1637,7 @@ footer {
     width: 110px;
     height: 110px;
     border-radius: 50%;
-    background: #3b82f6;
+    background: #3b83f600;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1718,18 +1730,17 @@ footer {
 .option-icon-box {
     width: 48px;
     height: 48px;
-    background-color: #f3f4f6;
+    background-color: #8597b900;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.3rem;
-    color: #374151;
 }
 
 .option-info h3 {
     font-size: 1rem;
-    color: #111827;
+    color: #27ae60;
     font-weight: 700;
     margin-bottom: 2px;
 }
@@ -1826,13 +1837,17 @@ footer {
     justify-content: center;
     font-size: 1.8rem;
     flex-shrink: 0;
+    overflow: hidden;
 }
 
-.bg-green { background-color: #e2ede5; }
-.bg-purple { background-color: #ede9f6; }
-.bg-orange { background-color: #faede1; }
-.bg-pink { background-color: #fbe6e8; }
-.bg-blue { background-color: #e5f1f6; }
+.resource-icon-box img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    display: block;
+    border-radius: 25px;
+}
+
 
 .resource-info h3 {
     font-size: 1.15rem;

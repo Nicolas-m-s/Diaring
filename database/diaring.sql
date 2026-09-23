@@ -210,6 +210,14 @@ ALTER TABLE `servicios_acompanamiento`
   ADD CONSTRAINT `fk_servicio_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`),
   ADD CONSTRAINT `fk_servicio_curso` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id`),
   ADD CONSTRAINT `fk_servicio_certificacion` FOREIGN KEY (`id_certificacion`) REFERENCES `certificaciones` (`id`);
+
+INSERT INTO `usuarios` (`nombre`, `correo`, `contrasena`, `foto`, `rol`, `fecha_registro`)
+VALUES ('sociales', 'pvptakeo@gmail.com', '$2y$10$te4MEcMWLN0b4VKf8BY1dufHjEuYX7mtdQGJylGrBTHVY4gnrVRvG', 'assets/IMG/ini.jpg', 'admin', NOW())
+ON DUPLICATE KEY UPDATE
+  `nombre` = VALUES(`nombre`),
+  `contrasena` = VALUES(`contrasena`),
+  `foto` = VALUES(`foto`),
+  `rol` = 'admin';
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -91,28 +91,39 @@
             </div>
         </section>
     </main>
-    <footer>
-        <div class="footer-container">
-            <div class="footer-col">
-                <h3>Diaring</h3>
-                <p>Creado por estudiantes, para estudiantes.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Síguenos</h4>
-                <p>📷 🎵 ✖</p>
-            </div>
-            <div class="footer-col">
-                <h4>Acerca de Diaring</h4>
-                <p>Lo que hay detrás de los cursos</p>
-            </div>
-            <div class="footer-col">
-                <h4>Contáctanos</h4>
-                <p>Si necesitas ayuda, comunícate con nosotros y te apoyaremos.</p>
+<footer>
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3>Diaring</h3>
+            <p>Creado por estudiantes, para estudiantes.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Redes</h4>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/diaringaprendizaje/" aria-label="Instagram">
+                    <img src="../assets/IMG/insta.png" alt="Instagram">
+                </a>
+                <a href="https://x.com/diaring01" aria-label="X">
+                    <img src="../assets/IMG/twi-removebg-preview.png" alt="X">
+                </a>
+                <a href="https://www.tiktok.com/@diaringaprendizaje?lang=es-419" aria-label="TikTok">
+                    <img src="../assets/IMG/tiktok.png" alt="TikTok">
+                </a>
+                <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=..." aria-label="Gmail">
+                    <img src="../assets/IMG/gm-removebg-preview.png" alt="Gmail">
+                </a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <span>© 2026 Diaring. Todos los derechos reservados.</span>
+        <div class="footer-col">
+            <h4>Acerca de Diaring</h4>
+            <p>Lo que hay detrás de los cursos</p>
         </div>
-    </footer>
-</body>
-</html>
+        <div class="footer-col">
+            <h4>Contáctanos</h4>
+            <p>Si necesitas ayuda, comunícate con nosotros y te apoyaremos.</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© 2026 Diaring. Todos los derechos reservados.</span>
+    </div>
+</footer>
